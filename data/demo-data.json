@@ -1,0 +1,5260 @@
+{
+  "meta": {
+    "project": "FANUC Industrial AI Command Center",
+    "poweredBy": "AIonOS",
+    "mode": "Static GitHub Pages demo",
+    "dataClassification": "Synthetic demo data only",
+    "generatedOn": "2026-06-15"
+  },
+  "scenario": {
+    "name": "Quality anomaly correlated with Robot R-07 health drift",
+    "durationSeconds": 24,
+    "script": [
+      "Start with all robots running normally.",
+      "Vision Agent detects a surface scratch on part BX-2041.",
+      "Robot Health Agent correlates defect with torque and vibration drift on Robot R-07.",
+      "Predictive Maintenance Agent estimates remaining useful life of 38 hours.",
+      "Knowledge Agent retrieves gripper alignment SOP.",
+      "Supervisor Agent drafts a high-priority work order and quantifies business impact."
+    ],
+    "kpis": {
+      "oee": 83.4,
+      "qualityYield": 96.2,
+      "robotsActive": 32,
+      "openAlerts": 4,
+      "predictedDowntimeHours": 2.4,
+      "scrapExposureLakhs": 4.8,
+      "throughputRiskPct": 11.5
+    }
+  },
+  "robots": [
+    {
+      "id": "R-01",
+      "name": "FANUC M-20iD Cell 1",
+      "cell": "Cell 1",
+      "process": "Handling",
+      "status": "Running",
+      "healthScore": 85,
+      "utilization": 88.3,
+      "cycleTimeSec": 32.4,
+      "torqueNm": 42.3,
+      "vibrationMms": 1.44,
+      "temperatureC": 53.6,
+      "alarmCount24h": 0,
+      "rulHours": 864,
+      "lastMaintenance": "2026-05-11",
+      "nextAction": "No action"
+    },
+    {
+      "id": "R-02",
+      "name": "FANUC M-20iD Cell 1",
+      "cell": "Cell 1",
+      "process": "Welding",
+      "status": "Running",
+      "healthScore": 86,
+      "utilization": 77.1,
+      "cycleTimeSec": 38.8,
+      "torqueNm": 55.4,
+      "vibrationMms": 2.85,
+      "temperatureC": 52.9,
+      "alarmCount24h": 3,
+      "rulHours": 485,
+      "lastMaintenance": "2026-05-28",
+      "nextAction": "Cable dress check"
+    },
+    {
+      "id": "R-03",
+      "name": "FANUC LR Mate Cell 2",
+      "cell": "Cell 2",
+      "process": "Welding",
+      "status": "Running",
+      "healthScore": 88,
+      "utilization": 87.4,
+      "cycleTimeSec": 34.1,
+      "torqueNm": 42.8,
+      "vibrationMms": 3.4,
+      "temperatureC": 46.7,
+      "alarmCount24h": 0,
+      "rulHours": 649,
+      "lastMaintenance": "2026-02-21",
+      "nextAction": "Cable dress check"
+    },
+    {
+      "id": "R-04",
+      "name": "FANUC M-20iD Cell 2",
+      "cell": "Cell 2",
+      "process": "Handling",
+      "status": "Running",
+      "healthScore": 80,
+      "utilization": 88.1,
+      "cycleTimeSec": 37.7,
+      "torqueNm": 68.2,
+      "vibrationMms": 2.07,
+      "temperatureC": 50.4,
+      "alarmCount24h": 2,
+      "rulHours": 851,
+      "lastMaintenance": "2026-03-12",
+      "nextAction": "No action"
+    },
+    {
+      "id": "R-05",
+      "name": "FANUC M-20iD Cell 3",
+      "cell": "Cell 3",
+      "process": "CNC Load/Unload",
+      "status": "Running",
+      "healthScore": 81,
+      "utilization": 93.7,
+      "cycleTimeSec": 43.4,
+      "torqueNm": 64.9,
+      "vibrationMms": 2.07,
+      "temperatureC": 48.7,
+      "alarmCount24h": 2,
+      "rulHours": 426,
+      "lastMaintenance": "2026-04-21",
+      "nextAction": "Lubrication check"
+    },
+    {
+      "id": "R-06",
+      "name": "FANUC LR Mate Cell 3",
+      "cell": "Cell 3",
+      "process": "Handling",
+      "status": "Running",
+      "healthScore": 80,
+      "utilization": 85.4,
+      "cycleTimeSec": 31.1,
+      "torqueNm": 60.6,
+      "vibrationMms": 1.58,
+      "temperatureC": 47.5,
+      "alarmCount24h": 1,
+      "rulHours": 592,
+      "lastMaintenance": "2026-02-17",
+      "nextAction": "No action"
+    },
+    {
+      "id": "R-07",
+      "name": "FANUC M-20iD Cell 4",
+      "cell": "Cell 4",
+      "process": "Inspection Transfer",
+      "status": "Warning",
+      "healthScore": 61,
+      "utilization": 86.4,
+      "cycleTimeSec": 52.8,
+      "torqueNm": 82.6,
+      "vibrationMms": 6.72,
+      "temperatureC": 66.3,
+      "alarmCount24h": 9,
+      "rulHours": 38,
+      "lastMaintenance": "2026-04-12",
+      "nextAction": "Gripper alignment inspection"
+    },
+    {
+      "id": "R-08",
+      "name": "FANUC M-20iD Cell 4",
+      "cell": "Cell 4",
+      "process": "Packing",
+      "status": "Running",
+      "healthScore": 82,
+      "utilization": 91.3,
+      "cycleTimeSec": 33.7,
+      "torqueNm": 58.3,
+      "vibrationMms": 2.11,
+      "temperatureC": 56.5,
+      "alarmCount24h": 3,
+      "rulHours": 406,
+      "lastMaintenance": "2026-04-14",
+      "nextAction": "Lubrication check"
+    },
+    {
+      "id": "R-09",
+      "name": "FANUC LR Mate Cell 5",
+      "cell": "Cell 5",
+      "process": "Packing",
+      "status": "Running",
+      "healthScore": 80,
+      "utilization": 81.4,
+      "cycleTimeSec": 38.5,
+      "torqueNm": 49.2,
+      "vibrationMms": 3.49,
+      "temperatureC": 43.4,
+      "alarmCount24h": 3,
+      "rulHours": 353,
+      "lastMaintenance": "2026-02-13",
+      "nextAction": "Lubrication check"
+    },
+    {
+      "id": "R-10",
+      "name": "FANUC M-20iD Cell 5",
+      "cell": "Cell 5",
+      "process": "Inspection Transfer",
+      "status": "Warning",
+      "healthScore": 83,
+      "utilization": 85.1,
+      "cycleTimeSec": 34.9,
+      "torqueNm": 56.5,
+      "vibrationMms": 2.28,
+      "temperatureC": 45.3,
+      "alarmCount24h": 0,
+      "rulHours": 377,
+      "lastMaintenance": "2026-04-20",
+      "nextAction": "No action"
+    },
+    {
+      "id": "R-11",
+      "name": "FANUC M-20iD Cell 6",
+      "cell": "Cell 6",
+      "process": "Inspection Transfer",
+      "status": "Running",
+      "healthScore": 79,
+      "utilization": 75.5,
+      "cycleTimeSec": 28.1,
+      "torqueNm": 60.4,
+      "vibrationMms": 2.86,
+      "temperatureC": 57.5,
+      "alarmCount24h": 1,
+      "rulHours": 779,
+      "lastMaintenance": "2026-02-19",
+      "nextAction": "Lubrication check"
+    },
+    {
+      "id": "R-12",
+      "name": "FANUC LR Mate Cell 6",
+      "cell": "Cell 6",
+      "process": "CNC Load/Unload",
+      "status": "Running",
+      "healthScore": 84,
+      "utilization": 88.8,
+      "cycleTimeSec": 37.7,
+      "torqueNm": 62.1,
+      "vibrationMms": 2.42,
+      "temperatureC": 41.0,
+      "alarmCount24h": 2,
+      "rulHours": 760,
+      "lastMaintenance": "2026-02-13",
+      "nextAction": "Cable dress check"
+    }
+  ],
+  "telemetry": [
+    {
+      "timestamp": "2026-06-15T09:00:00",
+      "R-03": {
+        "cycleTimeSec": 38.68,
+        "torqueNm": 54.99,
+        "vibrationMms": 2.06,
+        "temperatureC": 47.65
+      },
+      "R-07": {
+        "cycleTimeSec": 38.68,
+        "torqueNm": 55.34,
+        "vibrationMms": 2.02,
+        "temperatureC": 47.99
+      },
+      "R-10": {
+        "cycleTimeSec": 37.22,
+        "torqueNm": 54.78,
+        "vibrationMms": 2.15,
+        "temperatureC": 47.7
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:00:10",
+      "R-03": {
+        "cycleTimeSec": 38.29,
+        "torqueNm": 54.65,
+        "vibrationMms": 2.15,
+        "temperatureC": 48.44
+      },
+      "R-07": {
+        "cycleTimeSec": 38.19,
+        "torqueNm": 53.63,
+        "vibrationMms": 2.21,
+        "temperatureC": 48.32
+      },
+      "R-10": {
+        "cycleTimeSec": 37.79,
+        "torqueNm": 53.93,
+        "vibrationMms": 2.3,
+        "temperatureC": 48.26
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:00:20",
+      "R-03": {
+        "cycleTimeSec": 38.55,
+        "torqueNm": 55.05,
+        "vibrationMms": 2.22,
+        "temperatureC": 48.06
+      },
+      "R-07": {
+        "cycleTimeSec": 38.37,
+        "torqueNm": 55.26,
+        "vibrationMms": 2.24,
+        "temperatureC": 48.05
+      },
+      "R-10": {
+        "cycleTimeSec": 37.89,
+        "torqueNm": 55.39,
+        "vibrationMms": 2.24,
+        "temperatureC": 48.6
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:00:30",
+      "R-03": {
+        "cycleTimeSec": 39.63,
+        "torqueNm": 54.2,
+        "vibrationMms": 2.34,
+        "temperatureC": 48.55
+      },
+      "R-07": {
+        "cycleTimeSec": 38.47,
+        "torqueNm": 54.38,
+        "vibrationMms": 2.47,
+        "temperatureC": 48.47
+      },
+      "R-10": {
+        "cycleTimeSec": 38.93,
+        "torqueNm": 56.34,
+        "vibrationMms": 2.45,
+        "temperatureC": 48.17
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:00:40",
+      "R-03": {
+        "cycleTimeSec": 38.56,
+        "torqueNm": 55.76,
+        "vibrationMms": 2.46,
+        "temperatureC": 48.52
+      },
+      "R-07": {
+        "cycleTimeSec": 39.7,
+        "torqueNm": 56.48,
+        "vibrationMms": 2.57,
+        "temperatureC": 48.23
+      },
+      "R-10": {
+        "cycleTimeSec": 39.11,
+        "torqueNm": 55.48,
+        "vibrationMms": 2.54,
+        "temperatureC": 48.35
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:00:50",
+      "R-03": {
+        "cycleTimeSec": 39.02,
+        "torqueNm": 56.27,
+        "vibrationMms": 2.53,
+        "temperatureC": 48.51
+      },
+      "R-07": {
+        "cycleTimeSec": 39.13,
+        "torqueNm": 57.7,
+        "vibrationMms": 2.53,
+        "temperatureC": 48.97
+      },
+      "R-10": {
+        "cycleTimeSec": 39.67,
+        "torqueNm": 55.08,
+        "vibrationMms": 2.64,
+        "temperatureC": 48.95
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:01:00",
+      "R-03": {
+        "cycleTimeSec": 40.7,
+        "torqueNm": 58.16,
+        "vibrationMms": 2.67,
+        "temperatureC": 48.55
+      },
+      "R-07": {
+        "cycleTimeSec": 39.83,
+        "torqueNm": 56.02,
+        "vibrationMms": 2.59,
+        "temperatureC": 48.46
+      },
+      "R-10": {
+        "cycleTimeSec": 39.64,
+        "torqueNm": 58.33,
+        "vibrationMms": 2.56,
+        "temperatureC": 49.05
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:01:10",
+      "R-03": {
+        "cycleTimeSec": 40.02,
+        "torqueNm": 57.07,
+        "vibrationMms": 2.74,
+        "temperatureC": 49.34
+      },
+      "R-07": {
+        "cycleTimeSec": 40.21,
+        "torqueNm": 57.96,
+        "vibrationMms": 2.58,
+        "temperatureC": 48.79
+      },
+      "R-10": {
+        "cycleTimeSec": 40.95,
+        "torqueNm": 57.54,
+        "vibrationMms": 2.66,
+        "temperatureC": 49.15
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:01:20",
+      "R-03": {
+        "cycleTimeSec": 39.53,
+        "torqueNm": 57.96,
+        "vibrationMms": 2.68,
+        "temperatureC": 49.36
+      },
+      "R-07": {
+        "cycleTimeSec": 39.71,
+        "torqueNm": 59.09,
+        "vibrationMms": 2.6,
+        "temperatureC": 48.82
+      },
+      "R-10": {
+        "cycleTimeSec": 40.5,
+        "torqueNm": 58.24,
+        "vibrationMms": 2.63,
+        "temperatureC": 48.77
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:01:30",
+      "R-03": {
+        "cycleTimeSec": 41.23,
+        "torqueNm": 57.33,
+        "vibrationMms": 2.72,
+        "temperatureC": 49.29
+      },
+      "R-07": {
+        "cycleTimeSec": 40.38,
+        "torqueNm": 58.34,
+        "vibrationMms": 2.7,
+        "temperatureC": 49.55
+      },
+      "R-10": {
+        "cycleTimeSec": 39.99,
+        "torqueNm": 58.74,
+        "vibrationMms": 2.65,
+        "temperatureC": 49.12
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:01:40",
+      "R-03": {
+        "cycleTimeSec": 41.0,
+        "torqueNm": 57.84,
+        "vibrationMms": 2.66,
+        "temperatureC": 49.52
+      },
+      "R-07": {
+        "cycleTimeSec": 39.92,
+        "torqueNm": 58.32,
+        "vibrationMms": 2.8,
+        "temperatureC": 49.72
+      },
+      "R-10": {
+        "cycleTimeSec": 39.92,
+        "torqueNm": 57.58,
+        "vibrationMms": 2.65,
+        "temperatureC": 49.67
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:01:50",
+      "R-03": {
+        "cycleTimeSec": 41.51,
+        "torqueNm": 59.9,
+        "vibrationMms": 2.65,
+        "temperatureC": 49.16
+      },
+      "R-07": {
+        "cycleTimeSec": 41.42,
+        "torqueNm": 59.37,
+        "vibrationMms": 2.7,
+        "temperatureC": 49.82
+      },
+      "R-10": {
+        "cycleTimeSec": 41.1,
+        "torqueNm": 57.28,
+        "vibrationMms": 2.74,
+        "temperatureC": 49.27
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:02:00",
+      "R-03": {
+        "cycleTimeSec": 41.21,
+        "torqueNm": 60.37,
+        "vibrationMms": 2.57,
+        "temperatureC": 49.24
+      },
+      "R-07": {
+        "cycleTimeSec": 40.21,
+        "torqueNm": 59.21,
+        "vibrationMms": 2.6,
+        "temperatureC": 49.63
+      },
+      "R-10": {
+        "cycleTimeSec": 41.31,
+        "torqueNm": 58.16,
+        "vibrationMms": 2.67,
+        "temperatureC": 49.36
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:02:10",
+      "R-03": {
+        "cycleTimeSec": 40.96,
+        "torqueNm": 60.52,
+        "vibrationMms": 2.67,
+        "temperatureC": 49.33
+      },
+      "R-07": {
+        "cycleTimeSec": 40.84,
+        "torqueNm": 58.63,
+        "vibrationMms": 2.5,
+        "temperatureC": 49.87
+      },
+      "R-10": {
+        "cycleTimeSec": 41.22,
+        "torqueNm": 58.59,
+        "vibrationMms": 2.64,
+        "temperatureC": 49.69
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:02:20",
+      "R-03": {
+        "cycleTimeSec": 40.87,
+        "torqueNm": 58.05,
+        "vibrationMms": 2.45,
+        "temperatureC": 50.06
+      },
+      "R-07": {
+        "cycleTimeSec": 41.73,
+        "torqueNm": 59.65,
+        "vibrationMms": 2.6,
+        "temperatureC": 49.82
+      },
+      "R-10": {
+        "cycleTimeSec": 40.37,
+        "torqueNm": 58.4,
+        "vibrationMms": 2.5,
+        "temperatureC": 50.07
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:02:30",
+      "R-03": {
+        "cycleTimeSec": 41.52,
+        "torqueNm": 60.78,
+        "vibrationMms": 2.54,
+        "temperatureC": 49.62
+      },
+      "R-07": {
+        "cycleTimeSec": 40.54,
+        "torqueNm": 58.5,
+        "vibrationMms": 2.52,
+        "temperatureC": 50.16
+      },
+      "R-10": {
+        "cycleTimeSec": 40.82,
+        "torqueNm": 60.06,
+        "vibrationMms": 2.39,
+        "temperatureC": 50.19
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:02:40",
+      "R-03": {
+        "cycleTimeSec": 41.59,
+        "torqueNm": 61.26,
+        "vibrationMms": 2.44,
+        "temperatureC": 50.25
+      },
+      "R-07": {
+        "cycleTimeSec": 40.08,
+        "torqueNm": 60.54,
+        "vibrationMms": 2.34,
+        "temperatureC": 50.29
+      },
+      "R-10": {
+        "cycleTimeSec": 41.48,
+        "torqueNm": 60.92,
+        "vibrationMms": 2.44,
+        "temperatureC": 49.75
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:02:50",
+      "R-03": {
+        "cycleTimeSec": 41.37,
+        "torqueNm": 58.75,
+        "vibrationMms": 2.36,
+        "temperatureC": 50.31
+      },
+      "R-07": {
+        "cycleTimeSec": 40.35,
+        "torqueNm": 60.88,
+        "vibrationMms": 2.27,
+        "temperatureC": 49.87
+      },
+      "R-10": {
+        "cycleTimeSec": 41.38,
+        "torqueNm": 59.11,
+        "vibrationMms": 2.19,
+        "temperatureC": 49.78
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:03:00",
+      "R-03": {
+        "cycleTimeSec": 40.42,
+        "torqueNm": 61.08,
+        "vibrationMms": 2.28,
+        "temperatureC": 49.93
+      },
+      "R-07": {
+        "cycleTimeSec": 40.98,
+        "torqueNm": 59.68,
+        "vibrationMms": 2.28,
+        "temperatureC": 50.13
+      },
+      "R-10": {
+        "cycleTimeSec": 41.52,
+        "torqueNm": 58.83,
+        "vibrationMms": 2.28,
+        "temperatureC": 49.85
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:03:10",
+      "R-03": {
+        "cycleTimeSec": 41.41,
+        "torqueNm": 59.3,
+        "vibrationMms": 2.01,
+        "temperatureC": 50.12
+      },
+      "R-07": {
+        "cycleTimeSec": 40.98,
+        "torqueNm": 59.44,
+        "vibrationMms": 2.11,
+        "temperatureC": 50.18
+      },
+      "R-10": {
+        "cycleTimeSec": 40.37,
+        "torqueNm": 60.23,
+        "vibrationMms": 2.04,
+        "temperatureC": 50.34
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:03:20",
+      "R-03": {
+        "cycleTimeSec": 39.49,
+        "torqueNm": 61.25,
+        "vibrationMms": 1.99,
+        "temperatureC": 50.42
+      },
+      "R-07": {
+        "cycleTimeSec": 40.82,
+        "torqueNm": 60.48,
+        "vibrationMms": 1.96,
+        "temperatureC": 49.9
+      },
+      "R-10": {
+        "cycleTimeSec": 40.68,
+        "torqueNm": 59.46,
+        "vibrationMms": 1.95,
+        "temperatureC": 50.52
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:03:30",
+      "R-03": {
+        "cycleTimeSec": 40.56,
+        "torqueNm": 59.3,
+        "vibrationMms": 1.85,
+        "temperatureC": 50.23
+      },
+      "R-07": {
+        "cycleTimeSec": 39.99,
+        "torqueNm": 59.29,
+        "vibrationMms": 1.81,
+        "temperatureC": 50.23
+      },
+      "R-10": {
+        "cycleTimeSec": 40.96,
+        "torqueNm": 60.44,
+        "vibrationMms": 1.97,
+        "temperatureC": 50.39
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:03:40",
+      "R-03": {
+        "cycleTimeSec": 39.57,
+        "torqueNm": 59.94,
+        "vibrationMms": 1.7,
+        "temperatureC": 50.18
+      },
+      "R-07": {
+        "cycleTimeSec": 39.8,
+        "torqueNm": 60.03,
+        "vibrationMms": 1.83,
+        "temperatureC": 50.32
+      },
+      "R-10": {
+        "cycleTimeSec": 39.82,
+        "torqueNm": 58.94,
+        "vibrationMms": 1.79,
+        "temperatureC": 50.67
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:03:50",
+      "R-03": {
+        "cycleTimeSec": 40.19,
+        "torqueNm": 58.65,
+        "vibrationMms": 1.63,
+        "temperatureC": 50.41
+      },
+      "R-07": {
+        "cycleTimeSec": 39.9,
+        "torqueNm": 59.15,
+        "vibrationMms": 1.78,
+        "temperatureC": 50.59
+      },
+      "R-10": {
+        "cycleTimeSec": 39.97,
+        "torqueNm": 58.82,
+        "vibrationMms": 1.66,
+        "temperatureC": 50.01
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:04:00",
+      "R-03": {
+        "cycleTimeSec": 38.91,
+        "torqueNm": 59.38,
+        "vibrationMms": 1.72,
+        "temperatureC": 50.09
+      },
+      "R-07": {
+        "cycleTimeSec": 39.22,
+        "torqueNm": 59.85,
+        "vibrationMms": 1.58,
+        "temperatureC": 50.59
+      },
+      "R-10": {
+        "cycleTimeSec": 39.36,
+        "torqueNm": 58.69,
+        "vibrationMms": 1.68,
+        "temperatureC": 50.03
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:04:10",
+      "R-03": {
+        "cycleTimeSec": 39.52,
+        "torqueNm": 60.04,
+        "vibrationMms": 1.51,
+        "temperatureC": 50.4
+      },
+      "R-07": {
+        "cycleTimeSec": 38.48,
+        "torqueNm": 60.6,
+        "vibrationMms": 1.59,
+        "temperatureC": 50.1
+      },
+      "R-10": {
+        "cycleTimeSec": 38.62,
+        "torqueNm": 60.27,
+        "vibrationMms": 1.58,
+        "temperatureC": 50.7
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:04:20",
+      "R-03": {
+        "cycleTimeSec": 39.05,
+        "torqueNm": 60.43,
+        "vibrationMms": 1.56,
+        "temperatureC": 50.84
+      },
+      "R-07": {
+        "cycleTimeSec": 39.45,
+        "torqueNm": 59.3,
+        "vibrationMms": 1.59,
+        "temperatureC": 50.48
+      },
+      "R-10": {
+        "cycleTimeSec": 39.35,
+        "torqueNm": 59.11,
+        "vibrationMms": 1.62,
+        "temperatureC": 50.67
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:04:30",
+      "R-03": {
+        "cycleTimeSec": 38.38,
+        "torqueNm": 57.95,
+        "vibrationMms": 1.46,
+        "temperatureC": 50.6
+      },
+      "R-07": {
+        "cycleTimeSec": 38.9,
+        "torqueNm": 58.73,
+        "vibrationMms": 1.54,
+        "temperatureC": 50.31
+      },
+      "R-10": {
+        "cycleTimeSec": 37.66,
+        "torqueNm": 58.03,
+        "vibrationMms": 1.47,
+        "temperatureC": 50.35
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:04:40",
+      "R-03": {
+        "cycleTimeSec": 38.16,
+        "torqueNm": 57.25,
+        "vibrationMms": 1.45,
+        "temperatureC": 50.65
+      },
+      "R-07": {
+        "cycleTimeSec": 38.46,
+        "torqueNm": 57.03,
+        "vibrationMms": 1.48,
+        "temperatureC": 50.53
+      },
+      "R-10": {
+        "cycleTimeSec": 37.94,
+        "torqueNm": 57.46,
+        "vibrationMms": 1.48,
+        "temperatureC": 50.82
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:04:50",
+      "R-03": {
+        "cycleTimeSec": 37.91,
+        "torqueNm": 58.57,
+        "vibrationMms": 1.58,
+        "temperatureC": 50.71
+      },
+      "R-07": {
+        "cycleTimeSec": 37.54,
+        "torqueNm": 56.5,
+        "vibrationMms": 1.47,
+        "temperatureC": 50.7
+      },
+      "R-10": {
+        "cycleTimeSec": 38.39,
+        "torqueNm": 59.34,
+        "vibrationMms": 1.49,
+        "temperatureC": 50.7
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:05:00",
+      "R-03": {
+        "cycleTimeSec": 37.51,
+        "torqueNm": 57.9,
+        "vibrationMms": 1.47,
+        "temperatureC": 50.26
+      },
+      "R-07": {
+        "cycleTimeSec": 37.31,
+        "torqueNm": 56.18,
+        "vibrationMms": 1.49,
+        "temperatureC": 50.63
+      },
+      "R-10": {
+        "cycleTimeSec": 37.26,
+        "torqueNm": 56.59,
+        "vibrationMms": 1.52,
+        "temperatureC": 50.19
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:05:10",
+      "R-03": {
+        "cycleTimeSec": 37.33,
+        "torqueNm": 55.76,
+        "vibrationMms": 1.54,
+        "temperatureC": 50.52
+      },
+      "R-07": {
+        "cycleTimeSec": 36.25,
+        "torqueNm": 57.61,
+        "vibrationMms": 1.49,
+        "temperatureC": 50.44
+      },
+      "R-10": {
+        "cycleTimeSec": 36.3,
+        "torqueNm": 56.82,
+        "vibrationMms": 1.5,
+        "temperatureC": 50.33
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:05:20",
+      "R-03": {
+        "cycleTimeSec": 37.26,
+        "torqueNm": 56.38,
+        "vibrationMms": 1.66,
+        "temperatureC": 50.71
+      },
+      "R-07": {
+        "cycleTimeSec": 36.35,
+        "torqueNm": 55.49,
+        "vibrationMms": 1.52,
+        "temperatureC": 50.48
+      },
+      "R-10": {
+        "cycleTimeSec": 37.69,
+        "torqueNm": 56.29,
+        "vibrationMms": 1.64,
+        "temperatureC": 50.67
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:05:30",
+      "R-03": {
+        "cycleTimeSec": 36.77,
+        "torqueNm": 57.05,
+        "vibrationMms": 1.77,
+        "temperatureC": 50.17
+      },
+      "R-07": {
+        "cycleTimeSec": 35.63,
+        "torqueNm": 55.25,
+        "vibrationMms": 1.6,
+        "temperatureC": 50.55
+      },
+      "R-10": {
+        "cycleTimeSec": 36.61,
+        "torqueNm": 55.44,
+        "vibrationMms": 1.72,
+        "temperatureC": 50.63
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:05:40",
+      "R-03": {
+        "cycleTimeSec": 35.62,
+        "torqueNm": 56.14,
+        "vibrationMms": 1.8,
+        "temperatureC": 50.07
+      },
+      "R-07": {
+        "cycleTimeSec": 36.79,
+        "torqueNm": 57.21,
+        "vibrationMms": 1.67,
+        "temperatureC": 50.0
+      },
+      "R-10": {
+        "cycleTimeSec": 35.88,
+        "torqueNm": 56.35,
+        "vibrationMms": 1.84,
+        "temperatureC": 50.29
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:05:50",
+      "R-03": {
+        "cycleTimeSec": 36.35,
+        "torqueNm": 54.07,
+        "vibrationMms": 1.88,
+        "temperatureC": 50.43
+      },
+      "R-07": {
+        "cycleTimeSec": 35.24,
+        "torqueNm": 56.16,
+        "vibrationMms": 1.91,
+        "temperatureC": 50.41
+      },
+      "R-10": {
+        "cycleTimeSec": 35.28,
+        "torqueNm": 56.79,
+        "vibrationMms": 1.9,
+        "temperatureC": 50.21
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:06:00",
+      "R-03": {
+        "cycleTimeSec": 35.6,
+        "torqueNm": 54.46,
+        "vibrationMms": 1.93,
+        "temperatureC": 50.15
+      },
+      "R-07": {
+        "cycleTimeSec": 36.36,
+        "torqueNm": 55.81,
+        "vibrationMms": 1.85,
+        "temperatureC": 50.64
+      },
+      "R-10": {
+        "cycleTimeSec": 35.97,
+        "torqueNm": 55.83,
+        "vibrationMms": 1.97,
+        "temperatureC": 50.22
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:06:10",
+      "R-03": {
+        "cycleTimeSec": 35.95,
+        "torqueNm": 55.75,
+        "vibrationMms": 1.98,
+        "temperatureC": 50.46
+      },
+      "R-07": {
+        "cycleTimeSec": 35.59,
+        "torqueNm": 54.3,
+        "vibrationMms": 2.02,
+        "temperatureC": 50.4
+      },
+      "R-10": {
+        "cycleTimeSec": 35.11,
+        "torqueNm": 55.4,
+        "vibrationMms": 2.1,
+        "temperatureC": 49.88
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:06:20",
+      "R-03": {
+        "cycleTimeSec": 36.04,
+        "torqueNm": 53.08,
+        "vibrationMms": 2.12,
+        "temperatureC": 50.23
+      },
+      "R-07": {
+        "cycleTimeSec": 35.14,
+        "torqueNm": 52.44,
+        "vibrationMms": 2.2,
+        "temperatureC": 49.89
+      },
+      "R-10": {
+        "cycleTimeSec": 34.84,
+        "torqueNm": 54.74,
+        "vibrationMms": 2.1,
+        "temperatureC": 50.45
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:06:30",
+      "R-03": {
+        "cycleTimeSec": 35.58,
+        "torqueNm": 52.68,
+        "vibrationMms": 2.13,
+        "temperatureC": 50.43
+      },
+      "R-07": {
+        "cycleTimeSec": 34.47,
+        "torqueNm": 54.01,
+        "vibrationMms": 2.23,
+        "temperatureC": 50.28
+      },
+      "R-10": {
+        "cycleTimeSec": 35.56,
+        "torqueNm": 53.79,
+        "vibrationMms": 2.23,
+        "temperatureC": 50.3
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:06:40",
+      "R-03": {
+        "cycleTimeSec": 34.37,
+        "torqueNm": 52.02,
+        "vibrationMms": 2.36,
+        "temperatureC": 49.83
+      },
+      "R-07": {
+        "cycleTimeSec": 35.25,
+        "torqueNm": 52.78,
+        "vibrationMms": 2.33,
+        "temperatureC": 49.93
+      },
+      "R-10": {
+        "cycleTimeSec": 35.55,
+        "torqueNm": 52.35,
+        "vibrationMms": 2.37,
+        "temperatureC": 49.8
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:06:50",
+      "R-03": {
+        "cycleTimeSec": 34.59,
+        "torqueNm": 51.23,
+        "vibrationMms": 2.35,
+        "temperatureC": 49.6
+      },
+      "R-07": {
+        "cycleTimeSec": 35.1,
+        "torqueNm": 53.16,
+        "vibrationMms": 2.35,
+        "temperatureC": 49.67
+      },
+      "R-10": {
+        "cycleTimeSec": 35.01,
+        "torqueNm": 53.04,
+        "vibrationMms": 2.51,
+        "temperatureC": 49.92
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:07:00",
+      "R-03": {
+        "cycleTimeSec": 34.61,
+        "torqueNm": 50.7,
+        "vibrationMms": 2.43,
+        "temperatureC": 49.59
+      },
+      "R-07": {
+        "cycleTimeSec": 34.43,
+        "torqueNm": 50.44,
+        "vibrationMms": 2.5,
+        "temperatureC": 49.63
+      },
+      "R-10": {
+        "cycleTimeSec": 35.86,
+        "torqueNm": 52.06,
+        "vibrationMms": 2.53,
+        "temperatureC": 49.51
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:07:10",
+      "R-03": {
+        "cycleTimeSec": 35.67,
+        "torqueNm": 51.41,
+        "vibrationMms": 2.64,
+        "temperatureC": 49.77
+      },
+      "R-07": {
+        "cycleTimeSec": 34.95,
+        "torqueNm": 51.26,
+        "vibrationMms": 2.5,
+        "temperatureC": 49.35
+      },
+      "R-10": {
+        "cycleTimeSec": 35.8,
+        "torqueNm": 51.37,
+        "vibrationMms": 2.63,
+        "temperatureC": 49.63
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:07:20",
+      "R-03": {
+        "cycleTimeSec": 34.28,
+        "torqueNm": 51.38,
+        "vibrationMms": 2.53,
+        "temperatureC": 49.32
+      },
+      "R-07": {
+        "cycleTimeSec": 35.16,
+        "torqueNm": 50.4,
+        "vibrationMms": 2.72,
+        "temperatureC": 49.3
+      },
+      "R-10": {
+        "cycleTimeSec": 35.52,
+        "torqueNm": 51.31,
+        "vibrationMms": 2.68,
+        "temperatureC": 49.39
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:07:30",
+      "R-03": {
+        "cycleTimeSec": 35.16,
+        "torqueNm": 50.42,
+        "vibrationMms": 2.65,
+        "temperatureC": 49.78
+      },
+      "R-07": {
+        "cycleTimeSec": 36.01,
+        "torqueNm": 49.99,
+        "vibrationMms": 2.69,
+        "temperatureC": 49.58
+      },
+      "R-10": {
+        "cycleTimeSec": 35.56,
+        "torqueNm": 51.91,
+        "vibrationMms": 2.6,
+        "temperatureC": 49.27
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:07:40",
+      "R-03": {
+        "cycleTimeSec": 35.52,
+        "torqueNm": 49.14,
+        "vibrationMms": 2.62,
+        "temperatureC": 49.04
+      },
+      "R-07": {
+        "cycleTimeSec": 34.34,
+        "torqueNm": 50.02,
+        "vibrationMms": 2.71,
+        "temperatureC": 49.22
+      },
+      "R-10": {
+        "cycleTimeSec": 34.75,
+        "torqueNm": 50.79,
+        "vibrationMms": 2.73,
+        "temperatureC": 49.35
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:07:50",
+      "R-03": {
+        "cycleTimeSec": 35.72,
+        "torqueNm": 51.07,
+        "vibrationMms": 2.76,
+        "temperatureC": 49.36
+      },
+      "R-07": {
+        "cycleTimeSec": 35.67,
+        "torqueNm": 51.1,
+        "vibrationMms": 2.68,
+        "temperatureC": 49.3
+      },
+      "R-10": {
+        "cycleTimeSec": 35.65,
+        "torqueNm": 51.03,
+        "vibrationMms": 2.77,
+        "temperatureC": 48.92
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:08:00",
+      "R-03": {
+        "cycleTimeSec": 34.96,
+        "torqueNm": 48.88,
+        "vibrationMms": 2.74,
+        "temperatureC": 49.2
+      },
+      "R-07": {
+        "cycleTimeSec": 35.18,
+        "torqueNm": 48.33,
+        "vibrationMms": 2.73,
+        "temperatureC": 49.3
+      },
+      "R-10": {
+        "cycleTimeSec": 36.36,
+        "torqueNm": 49.46,
+        "vibrationMms": 2.69,
+        "temperatureC": 48.81
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:08:10",
+      "R-03": {
+        "cycleTimeSec": 34.94,
+        "torqueNm": 48.94,
+        "vibrationMms": 2.64,
+        "temperatureC": 48.82
+      },
+      "R-07": {
+        "cycleTimeSec": 35.03,
+        "torqueNm": 50.53,
+        "vibrationMms": 2.74,
+        "temperatureC": 49.08
+      },
+      "R-10": {
+        "cycleTimeSec": 36.58,
+        "torqueNm": 50.65,
+        "vibrationMms": 2.71,
+        "temperatureC": 48.83
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:08:20",
+      "R-03": {
+        "cycleTimeSec": 35.18,
+        "torqueNm": 49.64,
+        "vibrationMms": 2.63,
+        "temperatureC": 49.01
+      },
+      "R-07": {
+        "cycleTimeSec": 36.75,
+        "torqueNm": 47.92,
+        "vibrationMms": 2.65,
+        "temperatureC": 49.0
+      },
+      "R-10": {
+        "cycleTimeSec": 35.99,
+        "torqueNm": 47.65,
+        "vibrationMms": 2.6,
+        "temperatureC": 48.76
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:08:30",
+      "R-03": {
+        "cycleTimeSec": 36.57,
+        "torqueNm": 49.7,
+        "vibrationMms": 2.55,
+        "temperatureC": 48.91
+      },
+      "R-07": {
+        "cycleTimeSec": 35.88,
+        "torqueNm": 49.97,
+        "vibrationMms": 2.64,
+        "temperatureC": 48.8
+      },
+      "R-10": {
+        "cycleTimeSec": 36.18,
+        "torqueNm": 48.07,
+        "vibrationMms": 2.54,
+        "temperatureC": 49.13
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:08:40",
+      "R-03": {
+        "cycleTimeSec": 36.38,
+        "torqueNm": 48.47,
+        "vibrationMms": 2.61,
+        "temperatureC": 48.75
+      },
+      "R-07": {
+        "cycleTimeSec": 36.62,
+        "torqueNm": 48.17,
+        "vibrationMms": 2.45,
+        "temperatureC": 48.51
+      },
+      "R-10": {
+        "cycleTimeSec": 37.01,
+        "torqueNm": 48.8,
+        "vibrationMms": 2.56,
+        "temperatureC": 48.39
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:08:50",
+      "R-03": {
+        "cycleTimeSec": 36.94,
+        "torqueNm": 49.54,
+        "vibrationMms": 2.42,
+        "temperatureC": 48.65
+      },
+      "R-07": {
+        "cycleTimeSec": 36.17,
+        "torqueNm": 49.68,
+        "vibrationMms": 2.46,
+        "temperatureC": 48.28
+      },
+      "R-10": {
+        "cycleTimeSec": 36.23,
+        "torqueNm": 48.41,
+        "vibrationMms": 2.44,
+        "temperatureC": 48.16
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:09:00",
+      "R-03": {
+        "cycleTimeSec": 38.05,
+        "torqueNm": 49.37,
+        "vibrationMms": 2.34,
+        "temperatureC": 48.05
+      },
+      "R-07": {
+        "cycleTimeSec": 37.76,
+        "torqueNm": 48.13,
+        "vibrationMms": 2.39,
+        "temperatureC": 48.36
+      },
+      "R-10": {
+        "cycleTimeSec": 36.75,
+        "torqueNm": 49.14,
+        "vibrationMms": 2.44,
+        "temperatureC": 48.15
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:09:10",
+      "R-03": {
+        "cycleTimeSec": 37.58,
+        "torqueNm": 47.7,
+        "vibrationMms": 2.34,
+        "temperatureC": 48.22
+      },
+      "R-07": {
+        "cycleTimeSec": 38.17,
+        "torqueNm": 49.14,
+        "vibrationMms": 2.21,
+        "temperatureC": 48.45
+      },
+      "R-10": {
+        "cycleTimeSec": 37.33,
+        "torqueNm": 49.35,
+        "vibrationMms": 2.25,
+        "temperatureC": 48.47
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:09:20",
+      "R-03": {
+        "cycleTimeSec": 37.43,
+        "torqueNm": 47.4,
+        "vibrationMms": 2.17,
+        "temperatureC": 48.48
+      },
+      "R-07": {
+        "cycleTimeSec": 37.8,
+        "torqueNm": 46.95,
+        "vibrationMms": 2.16,
+        "temperatureC": 47.95
+      },
+      "R-10": {
+        "cycleTimeSec": 37.91,
+        "torqueNm": 48.14,
+        "vibrationMms": 2.15,
+        "temperatureC": 47.93
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:09:30",
+      "R-03": {
+        "cycleTimeSec": 37.59,
+        "torqueNm": 48.6,
+        "vibrationMms": 2.07,
+        "temperatureC": 47.72
+      },
+      "R-07": {
+        "cycleTimeSec": 38.65,
+        "torqueNm": 46.64,
+        "vibrationMms": 2.1,
+        "temperatureC": 48.1
+      },
+      "R-10": {
+        "cycleTimeSec": 38.71,
+        "torqueNm": 47.66,
+        "vibrationMms": 2.09,
+        "temperatureC": 48.19
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:09:40",
+      "R-03": {
+        "cycleTimeSec": 39.35,
+        "torqueNm": 48.03,
+        "vibrationMms": 1.86,
+        "temperatureC": 47.8
+      },
+      "R-07": {
+        "cycleTimeSec": 38.64,
+        "torqueNm": 49.15,
+        "vibrationMms": 2.03,
+        "temperatureC": 47.75
+      },
+      "R-10": {
+        "cycleTimeSec": 38.53,
+        "torqueNm": 47.91,
+        "vibrationMms": 2.0,
+        "temperatureC": 47.73
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:09:50",
+      "R-03": {
+        "cycleTimeSec": 39.09,
+        "torqueNm": 47.09,
+        "vibrationMms": 1.86,
+        "temperatureC": 48.04
+      },
+      "R-07": {
+        "cycleTimeSec": 38.52,
+        "torqueNm": 48.7,
+        "vibrationMms": 1.89,
+        "temperatureC": 47.94
+      },
+      "R-10": {
+        "cycleTimeSec": 39.44,
+        "torqueNm": 49.2,
+        "vibrationMms": 1.84,
+        "temperatureC": 47.51
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:10:00",
+      "R-03": {
+        "cycleTimeSec": 39.52,
+        "torqueNm": 49.02,
+        "vibrationMms": 1.85,
+        "temperatureC": 47.15
+      },
+      "R-07": {
+        "cycleTimeSec": 38.35,
+        "torqueNm": 48.64,
+        "vibrationMms": 1.86,
+        "temperatureC": 47.92
+      },
+      "R-10": {
+        "cycleTimeSec": 39.57,
+        "torqueNm": 48.05,
+        "vibrationMms": 1.69,
+        "temperatureC": 47.63
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:10:10",
+      "R-03": {
+        "cycleTimeSec": 40.09,
+        "torqueNm": 48.24,
+        "vibrationMms": 1.73,
+        "temperatureC": 47.71
+      },
+      "R-07": {
+        "cycleTimeSec": 38.61,
+        "torqueNm": 49.3,
+        "vibrationMms": 1.65,
+        "temperatureC": 47.29
+      },
+      "R-10": {
+        "cycleTimeSec": 38.79,
+        "torqueNm": 48.5,
+        "vibrationMms": 1.71,
+        "temperatureC": 47.62
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:10:20",
+      "R-03": {
+        "cycleTimeSec": 39.11,
+        "torqueNm": 47.35,
+        "vibrationMms": 1.7,
+        "temperatureC": 47.35
+      },
+      "R-07": {
+        "cycleTimeSec": 39.24,
+        "torqueNm": 49.85,
+        "vibrationMms": 1.56,
+        "temperatureC": 47.22
+      },
+      "R-10": {
+        "cycleTimeSec": 39.27,
+        "torqueNm": 47.87,
+        "vibrationMms": 1.53,
+        "temperatureC": 47.5
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:10:30",
+      "R-03": {
+        "cycleTimeSec": 40.69,
+        "torqueNm": 49.38,
+        "vibrationMms": 1.5,
+        "temperatureC": 47.08
+      },
+      "R-07": {
+        "cycleTimeSec": 39.69,
+        "torqueNm": 49.11,
+        "vibrationMms": 1.6,
+        "temperatureC": 47.06
+      },
+      "R-10": {
+        "cycleTimeSec": 39.52,
+        "torqueNm": 49.88,
+        "vibrationMms": 1.51,
+        "temperatureC": 47.03
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:10:40",
+      "R-03": {
+        "cycleTimeSec": 40.18,
+        "torqueNm": 48.33,
+        "vibrationMms": 1.55,
+        "temperatureC": 47.05
+      },
+      "R-07": {
+        "cycleTimeSec": 41.1,
+        "torqueNm": 48.51,
+        "vibrationMms": 1.63,
+        "temperatureC": 47.12
+      },
+      "R-10": {
+        "cycleTimeSec": 39.8,
+        "torqueNm": 49.32,
+        "vibrationMms": 1.57,
+        "temperatureC": 47.19
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:10:50",
+      "R-03": {
+        "cycleTimeSec": 39.61,
+        "torqueNm": 49.75,
+        "vibrationMms": 1.51,
+        "temperatureC": 47.19
+      },
+      "R-07": {
+        "cycleTimeSec": 40.04,
+        "torqueNm": 50.32,
+        "vibrationMms": 1.53,
+        "temperatureC": 46.75
+      },
+      "R-10": {
+        "cycleTimeSec": 40.67,
+        "torqueNm": 49.79,
+        "vibrationMms": 1.54,
+        "temperatureC": 47.05
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:11:00",
+      "R-03": {
+        "cycleTimeSec": 40.89,
+        "torqueNm": 50.78,
+        "vibrationMms": 1.53,
+        "temperatureC": 47.07
+      },
+      "R-07": {
+        "cycleTimeSec": 40.87,
+        "torqueNm": 49.19,
+        "vibrationMms": 1.49,
+        "temperatureC": 46.81
+      },
+      "R-10": {
+        "cycleTimeSec": 41.02,
+        "torqueNm": 48.54,
+        "vibrationMms": 1.46,
+        "temperatureC": 46.94
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:11:10",
+      "R-03": {
+        "cycleTimeSec": 40.17,
+        "torqueNm": 49.03,
+        "vibrationMms": 1.52,
+        "temperatureC": 47.01
+      },
+      "R-07": {
+        "cycleTimeSec": 40.81,
+        "torqueNm": 51.38,
+        "vibrationMms": 1.57,
+        "temperatureC": 46.43
+      },
+      "R-10": {
+        "cycleTimeSec": 41.34,
+        "torqueNm": 50.08,
+        "vibrationMms": 1.57,
+        "temperatureC": 46.83
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:11:20",
+      "R-03": {
+        "cycleTimeSec": 40.58,
+        "torqueNm": 49.38,
+        "vibrationMms": 1.63,
+        "temperatureC": 46.23
+      },
+      "R-07": {
+        "cycleTimeSec": 41.71,
+        "torqueNm": 51.61,
+        "vibrationMms": 1.58,
+        "temperatureC": 46.9
+      },
+      "R-10": {
+        "cycleTimeSec": 41.71,
+        "torqueNm": 51.44,
+        "vibrationMms": 1.51,
+        "temperatureC": 46.75
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:11:30",
+      "R-03": {
+        "cycleTimeSec": 40.07,
+        "torqueNm": 51.06,
+        "vibrationMms": 1.57,
+        "temperatureC": 46.54
+      },
+      "R-07": {
+        "cycleTimeSec": 41.26,
+        "torqueNm": 51.2,
+        "vibrationMms": 1.64,
+        "temperatureC": 46.76
+      },
+      "R-10": {
+        "cycleTimeSec": 40.24,
+        "torqueNm": 50.15,
+        "vibrationMms": 1.48,
+        "temperatureC": 46.71
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:11:40",
+      "R-03": {
+        "cycleTimeSec": 41.1,
+        "torqueNm": 52.64,
+        "vibrationMms": 1.57,
+        "temperatureC": 45.95
+      },
+      "R-07": {
+        "cycleTimeSec": 41.57,
+        "torqueNm": 52.62,
+        "vibrationMms": 1.59,
+        "temperatureC": 46.23
+      },
+      "R-10": {
+        "cycleTimeSec": 40.34,
+        "torqueNm": 52.73,
+        "vibrationMms": 1.59,
+        "temperatureC": 46.29
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:11:50",
+      "R-03": {
+        "cycleTimeSec": 40.27,
+        "torqueNm": 53.01,
+        "vibrationMms": 1.63,
+        "temperatureC": 46.16
+      },
+      "R-07": {
+        "cycleTimeSec": 41.31,
+        "torqueNm": 52.58,
+        "vibrationMms": 1.79,
+        "temperatureC": 46.14
+      },
+      "R-10": {
+        "cycleTimeSec": 41.43,
+        "torqueNm": 50.81,
+        "vibrationMms": 1.68,
+        "temperatureC": 45.88
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:12:00",
+      "R-03": {
+        "cycleTimeSec": 40.95,
+        "torqueNm": 52.05,
+        "vibrationMms": 1.87,
+        "temperatureC": 45.73
+      },
+      "R-07": {
+        "cycleTimeSec": 40.74,
+        "torqueNm": 52.15,
+        "vibrationMms": 1.87,
+        "temperatureC": 46.39
+      },
+      "R-10": {
+        "cycleTimeSec": 40.25,
+        "torqueNm": 52.88,
+        "vibrationMms": 1.79,
+        "temperatureC": 46.49
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:12:10",
+      "R-03": {
+        "cycleTimeSec": 40.65,
+        "torqueNm": 52.5,
+        "vibrationMms": 1.8,
+        "temperatureC": 45.72
+      },
+      "R-07": {
+        "cycleTimeSec": 41.53,
+        "torqueNm": 52.67,
+        "vibrationMms": 1.9,
+        "temperatureC": 46.13
+      },
+      "R-10": {
+        "cycleTimeSec": 41.08,
+        "torqueNm": 51.37,
+        "vibrationMms": 1.92,
+        "temperatureC": 45.82
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:12:20",
+      "R-03": {
+        "cycleTimeSec": 40.13,
+        "torqueNm": 53.5,
+        "vibrationMms": 1.88,
+        "temperatureC": 46.15
+      },
+      "R-07": {
+        "cycleTimeSec": 40.27,
+        "torqueNm": 52.45,
+        "vibrationMms": 2.04,
+        "temperatureC": 45.8
+      },
+      "R-10": {
+        "cycleTimeSec": 40.16,
+        "torqueNm": 54.5,
+        "vibrationMms": 1.86,
+        "temperatureC": 46.23
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:12:30",
+      "R-03": {
+        "cycleTimeSec": 40.02,
+        "torqueNm": 52.69,
+        "vibrationMms": 2.01,
+        "temperatureC": 45.6
+      },
+      "R-07": {
+        "cycleTimeSec": 40.95,
+        "torqueNm": 52.38,
+        "vibrationMms": 1.96,
+        "temperatureC": 46.1
+      },
+      "R-10": {
+        "cycleTimeSec": 40.19,
+        "torqueNm": 53.27,
+        "vibrationMms": 2.0,
+        "temperatureC": 45.51
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:12:40",
+      "R-03": {
+        "cycleTimeSec": 40.93,
+        "torqueNm": 54.38,
+        "vibrationMms": 2.21,
+        "temperatureC": 45.78
+      },
+      "R-07": {
+        "cycleTimeSec": 40.99,
+        "torqueNm": 54.34,
+        "vibrationMms": 2.08,
+        "temperatureC": 45.8
+      },
+      "R-10": {
+        "cycleTimeSec": 41.29,
+        "torqueNm": 52.93,
+        "vibrationMms": 2.22,
+        "temperatureC": 46.09
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:12:50",
+      "R-03": {
+        "cycleTimeSec": 40.33,
+        "torqueNm": 54.67,
+        "vibrationMms": 2.35,
+        "temperatureC": 45.38
+      },
+      "R-07": {
+        "cycleTimeSec": 40.25,
+        "torqueNm": 54.5,
+        "vibrationMms": 2.3,
+        "temperatureC": 45.72
+      },
+      "R-10": {
+        "cycleTimeSec": 41.03,
+        "torqueNm": 53.52,
+        "vibrationMms": 2.17,
+        "temperatureC": 45.82
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:13:00",
+      "R-03": {
+        "cycleTimeSec": 39.28,
+        "torqueNm": 54.62,
+        "vibrationMms": 2.38,
+        "temperatureC": 45.72
+      },
+      "R-07": {
+        "cycleTimeSec": 39.75,
+        "torqueNm": 56.77,
+        "vibrationMms": 2.36,
+        "temperatureC": 45.64
+      },
+      "R-10": {
+        "cycleTimeSec": 40.25,
+        "torqueNm": 54.09,
+        "vibrationMms": 2.39,
+        "temperatureC": 45.96
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:13:10",
+      "R-03": {
+        "cycleTimeSec": 40.08,
+        "torqueNm": 56.58,
+        "vibrationMms": 2.48,
+        "temperatureC": 45.4
+      },
+      "R-07": {
+        "cycleTimeSec": 39.72,
+        "torqueNm": 54.96,
+        "vibrationMms": 2.41,
+        "temperatureC": 45.59
+      },
+      "R-10": {
+        "cycleTimeSec": 39.66,
+        "torqueNm": 54.56,
+        "vibrationMms": 2.42,
+        "temperatureC": 45.76
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:13:20",
+      "R-03": {
+        "cycleTimeSec": 39.31,
+        "torqueNm": 55.2,
+        "vibrationMms": 2.6,
+        "temperatureC": 45.24
+      },
+      "R-07": {
+        "cycleTimeSec": 40.13,
+        "torqueNm": 55.02,
+        "vibrationMms": 2.44,
+        "temperatureC": 45.78
+      },
+      "R-10": {
+        "cycleTimeSec": 40.09,
+        "torqueNm": 56.41,
+        "vibrationMms": 2.53,
+        "temperatureC": 45.64
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:13:30",
+      "R-03": {
+        "cycleTimeSec": 38.93,
+        "torqueNm": 55.57,
+        "vibrationMms": 2.55,
+        "temperatureC": 45.69
+      },
+      "R-07": {
+        "cycleTimeSec": 39.69,
+        "torqueNm": 57.8,
+        "vibrationMms": 2.63,
+        "temperatureC": 45.93
+      },
+      "R-10": {
+        "cycleTimeSec": 39.42,
+        "torqueNm": 56.26,
+        "vibrationMms": 2.6,
+        "temperatureC": 45.33
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:13:40",
+      "R-03": {
+        "cycleTimeSec": 39.21,
+        "torqueNm": 56.31,
+        "vibrationMms": 2.56,
+        "temperatureC": 45.81
+      },
+      "R-07": {
+        "cycleTimeSec": 38.69,
+        "torqueNm": 57.92,
+        "vibrationMms": 2.65,
+        "temperatureC": 45.78
+      },
+      "R-10": {
+        "cycleTimeSec": 39.55,
+        "torqueNm": 58.56,
+        "vibrationMms": 2.7,
+        "temperatureC": 45.62
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:13:50",
+      "R-03": {
+        "cycleTimeSec": 38.86,
+        "torqueNm": 56.13,
+        "vibrationMms": 2.76,
+        "temperatureC": 45.78
+      },
+      "R-07": {
+        "cycleTimeSec": 38.18,
+        "torqueNm": 56.59,
+        "vibrationMms": 2.71,
+        "temperatureC": 45.36
+      },
+      "R-10": {
+        "cycleTimeSec": 38.32,
+        "torqueNm": 56.07,
+        "vibrationMms": 2.75,
+        "temperatureC": 45.57
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:14:00",
+      "R-03": {
+        "cycleTimeSec": 38.1,
+        "torqueNm": 56.87,
+        "vibrationMms": 2.72,
+        "temperatureC": 45.13
+      },
+      "R-07": {
+        "cycleTimeSec": 38.72,
+        "torqueNm": 57.09,
+        "vibrationMms": 2.68,
+        "temperatureC": 45.38
+      },
+      "R-10": {
+        "cycleTimeSec": 38.04,
+        "torqueNm": 58.61,
+        "vibrationMms": 2.75,
+        "temperatureC": 45.56
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:14:10",
+      "R-03": {
+        "cycleTimeSec": 37.19,
+        "torqueNm": 56.96,
+        "vibrationMms": 2.63,
+        "temperatureC": 45.59
+      },
+      "R-07": {
+        "cycleTimeSec": 38.25,
+        "torqueNm": 57.62,
+        "vibrationMms": 2.73,
+        "temperatureC": 45.49
+      },
+      "R-10": {
+        "cycleTimeSec": 37.84,
+        "torqueNm": 57.62,
+        "vibrationMms": 2.75,
+        "temperatureC": 45.19
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:14:20",
+      "R-03": {
+        "cycleTimeSec": 37.48,
+        "torqueNm": 57.99,
+        "vibrationMms": 2.72,
+        "temperatureC": 45.49
+      },
+      "R-07": {
+        "cycleTimeSec": 37.91,
+        "torqueNm": 57.27,
+        "vibrationMms": 2.67,
+        "temperatureC": 45.58
+      },
+      "R-10": {
+        "cycleTimeSec": 36.72,
+        "torqueNm": 58.04,
+        "vibrationMms": 2.63,
+        "temperatureC": 45.22
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:14:30",
+      "R-03": {
+        "cycleTimeSec": 36.84,
+        "torqueNm": 58.42,
+        "vibrationMms": 2.56,
+        "temperatureC": 45.72
+      },
+      "R-07": {
+        "cycleTimeSec": 36.7,
+        "torqueNm": 58.58,
+        "vibrationMms": 2.7,
+        "temperatureC": 45.52
+      },
+      "R-10": {
+        "cycleTimeSec": 37.88,
+        "torqueNm": 59.86,
+        "vibrationMms": 2.58,
+        "temperatureC": 45.81
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:14:40",
+      "R-03": {
+        "cycleTimeSec": 36.14,
+        "torqueNm": 57.76,
+        "vibrationMms": 2.7,
+        "temperatureC": 45.83
+      },
+      "R-07": {
+        "cycleTimeSec": 37.1,
+        "torqueNm": 59.43,
+        "vibrationMms": 2.66,
+        "temperatureC": 45.47
+      },
+      "R-10": {
+        "cycleTimeSec": 36.27,
+        "torqueNm": 57.77,
+        "vibrationMms": 2.58,
+        "temperatureC": 45.78
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:14:50",
+      "R-03": {
+        "cycleTimeSec": 36.87,
+        "torqueNm": 60.43,
+        "vibrationMms": 2.64,
+        "temperatureC": 45.24
+      },
+      "R-07": {
+        "cycleTimeSec": 37.28,
+        "torqueNm": 58.67,
+        "vibrationMms": 2.58,
+        "temperatureC": 45.59
+      },
+      "R-10": {
+        "cycleTimeSec": 36.47,
+        "torqueNm": 58.87,
+        "vibrationMms": 2.53,
+        "temperatureC": 45.43
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:15:00",
+      "R-03": {
+        "cycleTimeSec": 35.77,
+        "torqueNm": 59.66,
+        "vibrationMms": 2.41,
+        "temperatureC": 45.61
+      },
+      "R-07": {
+        "cycleTimeSec": 37.1,
+        "torqueNm": 59.18,
+        "vibrationMms": 2.54,
+        "temperatureC": 45.86
+      },
+      "R-10": {
+        "cycleTimeSec": 36.94,
+        "torqueNm": 58.84,
+        "vibrationMms": 2.42,
+        "temperatureC": 45.36
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:15:10",
+      "R-03": {
+        "cycleTimeSec": 36.28,
+        "torqueNm": 60.56,
+        "vibrationMms": 2.44,
+        "temperatureC": 45.39
+      },
+      "R-07": {
+        "cycleTimeSec": 36.71,
+        "torqueNm": 60.14,
+        "vibrationMms": 2.56,
+        "temperatureC": 46.01
+      },
+      "R-10": {
+        "cycleTimeSec": 36.01,
+        "torqueNm": 61.05,
+        "vibrationMms": 2.42,
+        "temperatureC": 45.75
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:15:20",
+      "R-03": {
+        "cycleTimeSec": 36.08,
+        "torqueNm": 60.99,
+        "vibrationMms": 2.35,
+        "temperatureC": 45.42
+      },
+      "R-07": {
+        "cycleTimeSec": 35.31,
+        "torqueNm": 60.46,
+        "vibrationMms": 2.48,
+        "temperatureC": 45.83
+      },
+      "R-10": {
+        "cycleTimeSec": 35.05,
+        "torqueNm": 59.92,
+        "vibrationMms": 2.28,
+        "temperatureC": 45.66
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:15:30",
+      "R-03": {
+        "cycleTimeSec": 34.84,
+        "torqueNm": 60.96,
+        "vibrationMms": 2.14,
+        "temperatureC": 46.04
+      },
+      "R-07": {
+        "cycleTimeSec": 36.62,
+        "torqueNm": 61.41,
+        "vibrationMms": 2.52,
+        "temperatureC": 46.19
+      },
+      "R-10": {
+        "cycleTimeSec": 35.73,
+        "torqueNm": 60.84,
+        "vibrationMms": 2.3,
+        "temperatureC": 45.71
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:15:40",
+      "R-03": {
+        "cycleTimeSec": 36.0,
+        "torqueNm": 60.45,
+        "vibrationMms": 2.09,
+        "temperatureC": 45.8
+      },
+      "R-07": {
+        "cycleTimeSec": 35.27,
+        "torqueNm": 60.13,
+        "vibrationMms": 2.44,
+        "temperatureC": 46.75
+      },
+      "R-10": {
+        "cycleTimeSec": 35.16,
+        "torqueNm": 60.64,
+        "vibrationMms": 2.13,
+        "temperatureC": 45.56
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:15:50",
+      "R-03": {
+        "cycleTimeSec": 34.83,
+        "torqueNm": 59.8,
+        "vibrationMms": 2.01,
+        "temperatureC": 45.91
+      },
+      "R-07": {
+        "cycleTimeSec": 35.23,
+        "torqueNm": 61.39,
+        "vibrationMms": 2.46,
+        "temperatureC": 46.57
+      },
+      "R-10": {
+        "cycleTimeSec": 34.99,
+        "torqueNm": 60.28,
+        "vibrationMms": 2.08,
+        "temperatureC": 46.01
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:16:00",
+      "R-03": {
+        "cycleTimeSec": 34.38,
+        "torqueNm": 58.72,
+        "vibrationMms": 1.96,
+        "temperatureC": 45.79
+      },
+      "R-07": {
+        "cycleTimeSec": 36.23,
+        "torqueNm": 62.53,
+        "vibrationMms": 2.58,
+        "temperatureC": 47.17
+      },
+      "R-10": {
+        "cycleTimeSec": 34.86,
+        "torqueNm": 60.18,
+        "vibrationMms": 1.86,
+        "temperatureC": 45.85
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:16:10",
+      "R-03": {
+        "cycleTimeSec": 35.91,
+        "torqueNm": 60.44,
+        "vibrationMms": 1.81,
+        "temperatureC": 46.13
+      },
+      "R-07": {
+        "cycleTimeSec": 36.63,
+        "torqueNm": 61.72,
+        "vibrationMms": 2.47,
+        "temperatureC": 47.33
+      },
+      "R-10": {
+        "cycleTimeSec": 35.63,
+        "torqueNm": 60.35,
+        "vibrationMms": 1.9,
+        "temperatureC": 46.24
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:16:20",
+      "R-03": {
+        "cycleTimeSec": 35.35,
+        "torqueNm": 59.79,
+        "vibrationMms": 1.78,
+        "temperatureC": 46.08
+      },
+      "R-07": {
+        "cycleTimeSec": 35.64,
+        "torqueNm": 62.07,
+        "vibrationMms": 2.43,
+        "temperatureC": 47.1
+      },
+      "R-10": {
+        "cycleTimeSec": 35.82,
+        "torqueNm": 59.67,
+        "vibrationMms": 1.69,
+        "temperatureC": 45.85
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:16:30",
+      "R-03": {
+        "cycleTimeSec": 34.24,
+        "torqueNm": 60.57,
+        "vibrationMms": 1.59,
+        "temperatureC": 46.45
+      },
+      "R-07": {
+        "cycleTimeSec": 36.58,
+        "torqueNm": 63.77,
+        "vibrationMms": 2.4,
+        "temperatureC": 47.43
+      },
+      "R-10": {
+        "cycleTimeSec": 35.48,
+        "torqueNm": 58.43,
+        "vibrationMms": 1.65,
+        "temperatureC": 45.97
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:16:40",
+      "R-03": {
+        "cycleTimeSec": 35.62,
+        "torqueNm": 60.14,
+        "vibrationMms": 1.67,
+        "temperatureC": 46.07
+      },
+      "R-07": {
+        "cycleTimeSec": 35.98,
+        "torqueNm": 62.44,
+        "vibrationMms": 2.55,
+        "temperatureC": 47.59
+      },
+      "R-10": {
+        "cycleTimeSec": 34.92,
+        "torqueNm": 58.68,
+        "vibrationMms": 1.66,
+        "temperatureC": 46.3
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:16:50",
+      "R-03": {
+        "cycleTimeSec": 35.14,
+        "torqueNm": 58.5,
+        "vibrationMms": 1.62,
+        "temperatureC": 46.42
+      },
+      "R-07": {
+        "cycleTimeSec": 36.85,
+        "torqueNm": 62.37,
+        "vibrationMms": 2.63,
+        "temperatureC": 48.43
+      },
+      "R-10": {
+        "cycleTimeSec": 35.01,
+        "torqueNm": 58.42,
+        "vibrationMms": 1.53,
+        "temperatureC": 46.47
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:17:00",
+      "R-03": {
+        "cycleTimeSec": 36.01,
+        "torqueNm": 59.74,
+        "vibrationMms": 1.58,
+        "temperatureC": 46.27
+      },
+      "R-07": {
+        "cycleTimeSec": 35.99,
+        "torqueNm": 63.19,
+        "vibrationMms": 2.65,
+        "temperatureC": 48.33
+      },
+      "R-10": {
+        "cycleTimeSec": 34.45,
+        "torqueNm": 59.83,
+        "vibrationMms": 1.59,
+        "temperatureC": 46.38
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:17:10",
+      "R-03": {
+        "cycleTimeSec": 35.77,
+        "torqueNm": 57.79,
+        "vibrationMms": 1.58,
+        "temperatureC": 46.39
+      },
+      "R-07": {
+        "cycleTimeSec": 36.55,
+        "torqueNm": 64.08,
+        "vibrationMms": 2.58,
+        "temperatureC": 48.5
+      },
+      "R-10": {
+        "cycleTimeSec": 35.03,
+        "torqueNm": 57.05,
+        "vibrationMms": 1.41,
+        "temperatureC": 46.67
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:17:20",
+      "R-03": {
+        "cycleTimeSec": 34.98,
+        "torqueNm": 59.61,
+        "vibrationMms": 1.48,
+        "temperatureC": 46.41
+      },
+      "R-07": {
+        "cycleTimeSec": 37.69,
+        "torqueNm": 63.69,
+        "vibrationMms": 2.73,
+        "temperatureC": 49.02
+      },
+      "R-10": {
+        "cycleTimeSec": 34.81,
+        "torqueNm": 57.49,
+        "vibrationMms": 1.57,
+        "temperatureC": 46.95
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:17:30",
+      "R-03": {
+        "cycleTimeSec": 35.0,
+        "torqueNm": 58.36,
+        "vibrationMms": 1.5,
+        "temperatureC": 46.52
+      },
+      "R-07": {
+        "cycleTimeSec": 36.44,
+        "torqueNm": 61.84,
+        "vibrationMms": 2.85,
+        "temperatureC": 49.07
+      },
+      "R-10": {
+        "cycleTimeSec": 36.06,
+        "torqueNm": 57.83,
+        "vibrationMms": 1.44,
+        "temperatureC": 46.74
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:17:40",
+      "R-03": {
+        "cycleTimeSec": 35.51,
+        "torqueNm": 55.99,
+        "vibrationMms": 1.53,
+        "temperatureC": 47.27
+      },
+      "R-07": {
+        "cycleTimeSec": 37.43,
+        "torqueNm": 61.26,
+        "vibrationMms": 2.97,
+        "temperatureC": 49.36
+      },
+      "R-10": {
+        "cycleTimeSec": 35.0,
+        "torqueNm": 57.39,
+        "vibrationMms": 1.49,
+        "temperatureC": 46.75
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:17:50",
+      "R-03": {
+        "cycleTimeSec": 35.99,
+        "torqueNm": 57.26,
+        "vibrationMms": 1.54,
+        "temperatureC": 47.1
+      },
+      "R-07": {
+        "cycleTimeSec": 38.14,
+        "torqueNm": 61.02,
+        "vibrationMms": 3.09,
+        "temperatureC": 49.2
+      },
+      "R-10": {
+        "cycleTimeSec": 36.17,
+        "torqueNm": 56.94,
+        "vibrationMms": 1.69,
+        "temperatureC": 47.21
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:18:00",
+      "R-03": {
+        "cycleTimeSec": 36.19,
+        "torqueNm": 56.38,
+        "vibrationMms": 1.68,
+        "temperatureC": 47.69
+      },
+      "R-07": {
+        "cycleTimeSec": 37.76,
+        "torqueNm": 60.63,
+        "vibrationMms": 3.18,
+        "temperatureC": 49.67
+      },
+      "R-10": {
+        "cycleTimeSec": 36.81,
+        "torqueNm": 56.86,
+        "vibrationMms": 1.7,
+        "temperatureC": 47.49
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:18:10",
+      "R-03": {
+        "cycleTimeSec": 36.38,
+        "torqueNm": 54.64,
+        "vibrationMms": 1.73,
+        "temperatureC": 47.69
+      },
+      "R-07": {
+        "cycleTimeSec": 38.0,
+        "torqueNm": 62.7,
+        "vibrationMms": 3.25,
+        "temperatureC": 50.21
+      },
+      "R-10": {
+        "cycleTimeSec": 36.92,
+        "torqueNm": 56.94,
+        "vibrationMms": 1.63,
+        "temperatureC": 47.66
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:18:20",
+      "R-03": {
+        "cycleTimeSec": 36.91,
+        "torqueNm": 54.91,
+        "vibrationMms": 1.71,
+        "temperatureC": 47.33
+      },
+      "R-07": {
+        "cycleTimeSec": 38.15,
+        "torqueNm": 62.93,
+        "vibrationMms": 3.4,
+        "temperatureC": 50.7
+      },
+      "R-10": {
+        "cycleTimeSec": 37.07,
+        "torqueNm": 54.79,
+        "vibrationMms": 1.85,
+        "temperatureC": 47.32
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:18:30",
+      "R-03": {
+        "cycleTimeSec": 37.05,
+        "torqueNm": 55.89,
+        "vibrationMms": 1.97,
+        "temperatureC": 47.57
+      },
+      "R-07": {
+        "cycleTimeSec": 38.7,
+        "torqueNm": 60.99,
+        "vibrationMms": 3.63,
+        "temperatureC": 50.76
+      },
+      "R-10": {
+        "cycleTimeSec": 38.02,
+        "torqueNm": 54.7,
+        "vibrationMms": 1.99,
+        "temperatureC": 47.71
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:18:40",
+      "R-03": {
+        "cycleTimeSec": 37.63,
+        "torqueNm": 55.82,
+        "vibrationMms": 1.99,
+        "temperatureC": 48.09
+      },
+      "R-07": {
+        "cycleTimeSec": 40.19,
+        "torqueNm": 59.86,
+        "vibrationMms": 3.73,
+        "temperatureC": 51.07
+      },
+      "R-10": {
+        "cycleTimeSec": 37.72,
+        "torqueNm": 54.01,
+        "vibrationMms": 1.91,
+        "temperatureC": 47.98
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:18:50",
+      "R-03": {
+        "cycleTimeSec": 37.62,
+        "torqueNm": 54.36,
+        "vibrationMms": 2.08,
+        "temperatureC": 48.14
+      },
+      "R-07": {
+        "cycleTimeSec": 39.93,
+        "torqueNm": 59.48,
+        "vibrationMms": 3.94,
+        "temperatureC": 50.95
+      },
+      "R-10": {
+        "cycleTimeSec": 38.86,
+        "torqueNm": 53.37,
+        "vibrationMms": 2.19,
+        "temperatureC": 48.34
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:19:00",
+      "R-03": {
+        "cycleTimeSec": 37.54,
+        "torqueNm": 53.96,
+        "vibrationMms": 2.16,
+        "temperatureC": 48.37
+      },
+      "R-07": {
+        "cycleTimeSec": 40.93,
+        "torqueNm": 61.93,
+        "vibrationMms": 3.94,
+        "temperatureC": 51.4
+      },
+      "R-10": {
+        "cycleTimeSec": 38.81,
+        "torqueNm": 52.15,
+        "vibrationMms": 2.1,
+        "temperatureC": 48.35
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:19:10",
+      "R-03": {
+        "cycleTimeSec": 38.39,
+        "torqueNm": 52.7,
+        "vibrationMms": 2.3,
+        "temperatureC": 48.35
+      },
+      "R-07": {
+        "cycleTimeSec": 41.34,
+        "torqueNm": 61.65,
+        "vibrationMms": 4.14,
+        "temperatureC": 51.78
+      },
+      "R-10": {
+        "cycleTimeSec": 38.76,
+        "torqueNm": 53.14,
+        "vibrationMms": 2.27,
+        "temperatureC": 48.38
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:19:20",
+      "R-03": {
+        "cycleTimeSec": 38.5,
+        "torqueNm": 51.4,
+        "vibrationMms": 2.43,
+        "temperatureC": 48.4
+      },
+      "R-07": {
+        "cycleTimeSec": 41.21,
+        "torqueNm": 60.21,
+        "vibrationMms": 4.26,
+        "temperatureC": 51.62
+      },
+      "R-10": {
+        "cycleTimeSec": 38.85,
+        "torqueNm": 54.05,
+        "vibrationMms": 2.34,
+        "temperatureC": 48.73
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:19:30",
+      "R-03": {
+        "cycleTimeSec": 39.24,
+        "torqueNm": 50.95,
+        "vibrationMms": 2.53,
+        "temperatureC": 48.5
+      },
+      "R-07": {
+        "cycleTimeSec": 42.51,
+        "torqueNm": 59.59,
+        "vibrationMms": 4.36,
+        "temperatureC": 52.2
+      },
+      "R-10": {
+        "cycleTimeSec": 39.88,
+        "torqueNm": 51.54,
+        "vibrationMms": 2.43,
+        "temperatureC": 48.19
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:19:40",
+      "R-03": {
+        "cycleTimeSec": 39.63,
+        "torqueNm": 52.79,
+        "vibrationMms": 2.61,
+        "temperatureC": 48.84
+      },
+      "R-07": {
+        "cycleTimeSec": 42.93,
+        "torqueNm": 59.9,
+        "vibrationMms": 4.63,
+        "temperatureC": 52.31
+      },
+      "R-10": {
+        "cycleTimeSec": 38.87,
+        "torqueNm": 50.72,
+        "vibrationMms": 2.47,
+        "temperatureC": 48.9
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:19:50",
+      "R-03": {
+        "cycleTimeSec": 38.98,
+        "torqueNm": 51.33,
+        "vibrationMms": 2.57,
+        "temperatureC": 49.05
+      },
+      "R-07": {
+        "cycleTimeSec": 42.61,
+        "torqueNm": 59.58,
+        "vibrationMms": 4.6,
+        "temperatureC": 52.38
+      },
+      "R-10": {
+        "cycleTimeSec": 40.73,
+        "torqueNm": 51.82,
+        "vibrationMms": 2.6,
+        "temperatureC": 49.02
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:20:00",
+      "R-03": {
+        "cycleTimeSec": 40.66,
+        "torqueNm": 49.46,
+        "vibrationMms": 2.74,
+        "temperatureC": 49.05
+      },
+      "R-07": {
+        "cycleTimeSec": 42.75,
+        "torqueNm": 59.55,
+        "vibrationMms": 4.75,
+        "temperatureC": 53.07
+      },
+      "R-10": {
+        "cycleTimeSec": 40.59,
+        "torqueNm": 51.16,
+        "vibrationMms": 2.58,
+        "temperatureC": 49.31
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:20:10",
+      "R-03": {
+        "cycleTimeSec": 40.19,
+        "torqueNm": 51.56,
+        "vibrationMms": 2.59,
+        "temperatureC": 48.76
+      },
+      "R-07": {
+        "cycleTimeSec": 42.51,
+        "torqueNm": 57.79,
+        "vibrationMms": 4.82,
+        "temperatureC": 53.17
+      },
+      "R-10": {
+        "cycleTimeSec": 40.03,
+        "torqueNm": 51.65,
+        "vibrationMms": 2.76,
+        "temperatureC": 49.34
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:20:20",
+      "R-03": {
+        "cycleTimeSec": 40.06,
+        "torqueNm": 50.35,
+        "vibrationMms": 2.71,
+        "temperatureC": 48.89
+      },
+      "R-07": {
+        "cycleTimeSec": 43.05,
+        "torqueNm": 58.7,
+        "vibrationMms": 4.92,
+        "temperatureC": 52.96
+      },
+      "R-10": {
+        "cycleTimeSec": 41.3,
+        "torqueNm": 48.91,
+        "vibrationMms": 2.73,
+        "temperatureC": 49.36
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:20:30",
+      "R-03": {
+        "cycleTimeSec": 40.86,
+        "torqueNm": 50.62,
+        "vibrationMms": 2.71,
+        "temperatureC": 49.57
+      },
+      "R-07": {
+        "cycleTimeSec": 42.79,
+        "torqueNm": 57.06,
+        "vibrationMms": 4.99,
+        "temperatureC": 53.5
+      },
+      "R-10": {
+        "cycleTimeSec": 40.95,
+        "torqueNm": 50.39,
+        "vibrationMms": 2.68,
+        "temperatureC": 49.42
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:20:40",
+      "R-03": {
+        "cycleTimeSec": 40.8,
+        "torqueNm": 49.65,
+        "vibrationMms": 2.64,
+        "temperatureC": 49.79
+      },
+      "R-07": {
+        "cycleTimeSec": 43.81,
+        "torqueNm": 59.2,
+        "vibrationMms": 5.02,
+        "temperatureC": 53.49
+      },
+      "R-10": {
+        "cycleTimeSec": 40.04,
+        "torqueNm": 47.95,
+        "vibrationMms": 2.67,
+        "temperatureC": 49.41
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:20:50",
+      "R-03": {
+        "cycleTimeSec": 40.38,
+        "torqueNm": 49.3,
+        "vibrationMms": 2.61,
+        "temperatureC": 49.71
+      },
+      "R-07": {
+        "cycleTimeSec": 44.42,
+        "torqueNm": 59.25,
+        "vibrationMms": 5.09,
+        "temperatureC": 53.57
+      },
+      "R-10": {
+        "cycleTimeSec": 40.67,
+        "torqueNm": 49.16,
+        "vibrationMms": 2.61,
+        "temperatureC": 49.51
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:21:00",
+      "R-03": {
+        "cycleTimeSec": 40.55,
+        "torqueNm": 47.97,
+        "vibrationMms": 2.52,
+        "temperatureC": 49.47
+      },
+      "R-07": {
+        "cycleTimeSec": 43.92,
+        "torqueNm": 58.43,
+        "vibrationMms": 4.94,
+        "temperatureC": 54.36
+      },
+      "R-10": {
+        "cycleTimeSec": 40.36,
+        "torqueNm": 48.2,
+        "vibrationMms": 2.62,
+        "temperatureC": 49.49
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:21:10",
+      "R-03": {
+        "cycleTimeSec": 41.47,
+        "torqueNm": 48.5,
+        "vibrationMms": 2.54,
+        "temperatureC": 49.74
+      },
+      "R-07": {
+        "cycleTimeSec": 43.88,
+        "torqueNm": 56.6,
+        "vibrationMms": 5.06,
+        "temperatureC": 54.27
+      },
+      "R-10": {
+        "cycleTimeSec": 41.84,
+        "torqueNm": 47.65,
+        "vibrationMms": 2.51,
+        "temperatureC": 49.39
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:21:20",
+      "R-03": {
+        "cycleTimeSec": 40.98,
+        "torqueNm": 49.47,
+        "vibrationMms": 2.5,
+        "temperatureC": 49.82
+      },
+      "R-07": {
+        "cycleTimeSec": 44.34,
+        "torqueNm": 59.06,
+        "vibrationMms": 4.92,
+        "temperatureC": 54.76
+      },
+      "R-10": {
+        "cycleTimeSec": 41.4,
+        "torqueNm": 49.11,
+        "vibrationMms": 2.44,
+        "temperatureC": 49.76
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:21:30",
+      "R-03": {
+        "cycleTimeSec": 41.07,
+        "torqueNm": 47.26,
+        "vibrationMms": 2.39,
+        "temperatureC": 49.59
+      },
+      "R-07": {
+        "cycleTimeSec": 44.3,
+        "torqueNm": 58.83,
+        "vibrationMms": 4.84,
+        "temperatureC": 55.02
+      },
+      "R-10": {
+        "cycleTimeSec": 41.27,
+        "torqueNm": 47.04,
+        "vibrationMms": 2.48,
+        "temperatureC": 49.85
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:21:40",
+      "R-03": {
+        "cycleTimeSec": 41.39,
+        "torqueNm": 47.6,
+        "vibrationMms": 2.38,
+        "temperatureC": 50.22
+      },
+      "R-07": {
+        "cycleTimeSec": 43.72,
+        "torqueNm": 58.12,
+        "vibrationMms": 4.83,
+        "temperatureC": 54.44
+      },
+      "R-10": {
+        "cycleTimeSec": 40.21,
+        "torqueNm": 47.58,
+        "vibrationMms": 2.29,
+        "temperatureC": 49.98
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:21:50",
+      "R-03": {
+        "cycleTimeSec": 40.93,
+        "torqueNm": 48.07,
+        "vibrationMms": 2.16,
+        "temperatureC": 50.19
+      },
+      "R-07": {
+        "cycleTimeSec": 43.6,
+        "torqueNm": 59.66,
+        "vibrationMms": 4.82,
+        "temperatureC": 54.81
+      },
+      "R-10": {
+        "cycleTimeSec": 40.45,
+        "torqueNm": 49.0,
+        "vibrationMms": 2.2,
+        "temperatureC": 50.26
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:22:00",
+      "R-03": {
+        "cycleTimeSec": 40.23,
+        "torqueNm": 48.95,
+        "vibrationMms": 2.07,
+        "temperatureC": 50.31
+      },
+      "R-07": {
+        "cycleTimeSec": 44.98,
+        "torqueNm": 58.57,
+        "vibrationMms": 4.76,
+        "temperatureC": 55.31
+      },
+      "R-10": {
+        "cycleTimeSec": 40.93,
+        "torqueNm": 46.58,
+        "vibrationMms": 2.09,
+        "temperatureC": 50.54
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:22:10",
+      "R-03": {
+        "cycleTimeSec": 40.91,
+        "torqueNm": 48.85,
+        "vibrationMms": 2.01,
+        "temperatureC": 50.41
+      },
+      "R-07": {
+        "cycleTimeSec": 44.14,
+        "torqueNm": 57.5,
+        "vibrationMms": 4.66,
+        "temperatureC": 55.38
+      },
+      "R-10": {
+        "cycleTimeSec": 41.02,
+        "torqueNm": 46.97,
+        "vibrationMms": 2.03,
+        "temperatureC": 49.86
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:22:20",
+      "R-03": {
+        "cycleTimeSec": 41.0,
+        "torqueNm": 46.92,
+        "vibrationMms": 1.8,
+        "temperatureC": 50.14
+      },
+      "R-07": {
+        "cycleTimeSec": 43.2,
+        "torqueNm": 59.26,
+        "vibrationMms": 4.56,
+        "temperatureC": 55.65
+      },
+      "R-10": {
+        "cycleTimeSec": 40.95,
+        "torqueNm": 49.21,
+        "vibrationMms": 1.95,
+        "temperatureC": 49.94
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:22:30",
+      "R-03": {
+        "cycleTimeSec": 39.3,
+        "torqueNm": 47.32,
+        "vibrationMms": 1.77,
+        "temperatureC": 50.47
+      },
+      "R-07": {
+        "cycleTimeSec": 43.69,
+        "torqueNm": 58.38,
+        "vibrationMms": 4.45,
+        "temperatureC": 55.89
+      },
+      "R-10": {
+        "cycleTimeSec": 39.67,
+        "torqueNm": 47.76,
+        "vibrationMms": 1.86,
+        "temperatureC": 50.52
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:22:40",
+      "R-03": {
+        "cycleTimeSec": 39.94,
+        "torqueNm": 48.92,
+        "vibrationMms": 1.75,
+        "temperatureC": 50.14
+      },
+      "R-07": {
+        "cycleTimeSec": 42.98,
+        "torqueNm": 59.4,
+        "vibrationMms": 4.41,
+        "temperatureC": 56.07
+      },
+      "R-10": {
+        "cycleTimeSec": 39.32,
+        "torqueNm": 47.71,
+        "vibrationMms": 1.67,
+        "temperatureC": 50.55
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:22:50",
+      "R-03": {
+        "cycleTimeSec": 39.07,
+        "torqueNm": 48.07,
+        "vibrationMms": 1.74,
+        "temperatureC": 50.66
+      },
+      "R-07": {
+        "cycleTimeSec": 42.79,
+        "torqueNm": 58.41,
+        "vibrationMms": 4.46,
+        "temperatureC": 55.71
+      },
+      "R-10": {
+        "cycleTimeSec": 40.26,
+        "torqueNm": 49.48,
+        "vibrationMms": 1.74,
+        "temperatureC": 50.67
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:23:00",
+      "R-03": {
+        "cycleTimeSec": 38.72,
+        "torqueNm": 48.11,
+        "vibrationMms": 1.64,
+        "temperatureC": 50.33
+      },
+      "R-07": {
+        "cycleTimeSec": 42.85,
+        "torqueNm": 59.17,
+        "vibrationMms": 4.39,
+        "temperatureC": 55.68
+      },
+      "R-10": {
+        "cycleTimeSec": 39.17,
+        "torqueNm": 50.05,
+        "vibrationMms": 1.63,
+        "temperatureC": 50.17
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:23:10",
+      "R-03": {
+        "cycleTimeSec": 38.99,
+        "torqueNm": 49.27,
+        "vibrationMms": 1.49,
+        "temperatureC": 50.61
+      },
+      "R-07": {
+        "cycleTimeSec": 42.74,
+        "torqueNm": 60.7,
+        "vibrationMms": 4.28,
+        "temperatureC": 55.95
+      },
+      "R-10": {
+        "cycleTimeSec": 39.17,
+        "torqueNm": 47.81,
+        "vibrationMms": 1.6,
+        "temperatureC": 50.08
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:23:20",
+      "R-03": {
+        "cycleTimeSec": 38.55,
+        "torqueNm": 50.59,
+        "vibrationMms": 1.5,
+        "temperatureC": 50.84
+      },
+      "R-07": {
+        "cycleTimeSec": 43.09,
+        "torqueNm": 60.64,
+        "vibrationMms": 4.31,
+        "temperatureC": 56.48
+      },
+      "R-10": {
+        "cycleTimeSec": 38.13,
+        "torqueNm": 49.74,
+        "vibrationMms": 1.6,
+        "temperatureC": 50.16
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:23:30",
+      "R-03": {
+        "cycleTimeSec": 38.26,
+        "torqueNm": 49.73,
+        "vibrationMms": 1.55,
+        "temperatureC": 50.85
+      },
+      "R-07": {
+        "cycleTimeSec": 42.88,
+        "torqueNm": 60.18,
+        "vibrationMms": 4.46,
+        "temperatureC": 55.93
+      },
+      "R-10": {
+        "cycleTimeSec": 38.88,
+        "torqueNm": 51.12,
+        "vibrationMms": 1.48,
+        "temperatureC": 50.5
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:23:40",
+      "R-03": {
+        "cycleTimeSec": 38.58,
+        "torqueNm": 51.37,
+        "vibrationMms": 1.59,
+        "temperatureC": 50.8
+      },
+      "R-07": {
+        "cycleTimeSec": 40.96,
+        "torqueNm": 61.84,
+        "vibrationMms": 4.33,
+        "temperatureC": 56.65
+      },
+      "R-10": {
+        "cycleTimeSec": 37.4,
+        "torqueNm": 51.45,
+        "vibrationMms": 1.51,
+        "temperatureC": 50.49
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:23:50",
+      "R-03": {
+        "cycleTimeSec": 38.25,
+        "torqueNm": 51.42,
+        "vibrationMms": 1.52,
+        "temperatureC": 50.24
+      },
+      "R-07": {
+        "cycleTimeSec": 40.87,
+        "torqueNm": 61.12,
+        "vibrationMms": 4.45,
+        "temperatureC": 56.14
+      },
+      "R-10": {
+        "cycleTimeSec": 36.9,
+        "torqueNm": 51.08,
+        "vibrationMms": 1.58,
+        "temperatureC": 50.54
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:24:00",
+      "R-03": {
+        "cycleTimeSec": 37.6,
+        "torqueNm": 49.81,
+        "vibrationMms": 1.63,
+        "temperatureC": 50.79
+      },
+      "R-07": {
+        "cycleTimeSec": 41.88,
+        "torqueNm": 62.71,
+        "vibrationMms": 4.43,
+        "temperatureC": 56.52
+      },
+      "R-10": {
+        "cycleTimeSec": 36.57,
+        "torqueNm": 49.7,
+        "vibrationMms": 1.52,
+        "temperatureC": 50.27
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:24:10",
+      "R-03": {
+        "cycleTimeSec": 36.39,
+        "torqueNm": 50.42,
+        "vibrationMms": 1.66,
+        "temperatureC": 50.81
+      },
+      "R-07": {
+        "cycleTimeSec": 40.67,
+        "torqueNm": 63.87,
+        "vibrationMms": 4.49,
+        "temperatureC": 56.56
+      },
+      "R-10": {
+        "cycleTimeSec": 37.17,
+        "torqueNm": 49.9,
+        "vibrationMms": 1.53,
+        "temperatureC": 50.29
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:24:20",
+      "R-03": {
+        "cycleTimeSec": 36.35,
+        "torqueNm": 51.67,
+        "vibrationMms": 1.75,
+        "temperatureC": 50.58
+      },
+      "R-07": {
+        "cycleTimeSec": 40.43,
+        "torqueNm": 62.62,
+        "vibrationMms": 4.76,
+        "temperatureC": 56.31
+      },
+      "R-10": {
+        "cycleTimeSec": 36.73,
+        "torqueNm": 50.82,
+        "vibrationMms": 1.6,
+        "temperatureC": 50.14
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:24:30",
+      "R-03": {
+        "cycleTimeSec": 36.69,
+        "torqueNm": 52.45,
+        "vibrationMms": 1.73,
+        "temperatureC": 50.42
+      },
+      "R-07": {
+        "cycleTimeSec": 40.48,
+        "torqueNm": 64.46,
+        "vibrationMms": 4.81,
+        "temperatureC": 56.28
+      },
+      "R-10": {
+        "cycleTimeSec": 35.79,
+        "torqueNm": 52.9,
+        "vibrationMms": 1.82,
+        "temperatureC": 50.04
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:24:40",
+      "R-03": {
+        "cycleTimeSec": 35.89,
+        "torqueNm": 53.23,
+        "vibrationMms": 1.75,
+        "temperatureC": 50.38
+      },
+      "R-07": {
+        "cycleTimeSec": 39.53,
+        "torqueNm": 65.07,
+        "vibrationMms": 4.88,
+        "temperatureC": 56.59
+      },
+      "R-10": {
+        "cycleTimeSec": 35.35,
+        "torqueNm": 52.1,
+        "vibrationMms": 1.83,
+        "temperatureC": 50.03
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:24:50",
+      "R-03": {
+        "cycleTimeSec": 35.22,
+        "torqueNm": 53.35,
+        "vibrationMms": 1.84,
+        "temperatureC": 50.29
+      },
+      "R-07": {
+        "cycleTimeSec": 40.69,
+        "torqueNm": 65.38,
+        "vibrationMms": 5.0,
+        "temperatureC": 56.51
+      },
+      "R-10": {
+        "cycleTimeSec": 34.95,
+        "torqueNm": 52.99,
+        "vibrationMms": 1.98,
+        "temperatureC": 50.46
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:25:00",
+      "R-03": {
+        "cycleTimeSec": 35.36,
+        "torqueNm": 54.55,
+        "vibrationMms": 2.07,
+        "temperatureC": 50.28
+      },
+      "R-07": {
+        "cycleTimeSec": 39.15,
+        "torqueNm": 65.65,
+        "vibrationMms": 5.03,
+        "temperatureC": 56.95
+      },
+      "R-10": {
+        "cycleTimeSec": 36.33,
+        "torqueNm": 52.31,
+        "vibrationMms": 2.11,
+        "temperatureC": 49.84
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:25:10",
+      "R-03": {
+        "cycleTimeSec": 35.2,
+        "torqueNm": 54.91,
+        "vibrationMms": 2.17,
+        "temperatureC": 50.53
+      },
+      "R-07": {
+        "cycleTimeSec": 40.1,
+        "torqueNm": 66.48,
+        "vibrationMms": 5.34,
+        "temperatureC": 56.45
+      },
+      "R-10": {
+        "cycleTimeSec": 36.03,
+        "torqueNm": 55.32,
+        "vibrationMms": 2.1,
+        "temperatureC": 50.3
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:25:20",
+      "R-03": {
+        "cycleTimeSec": 35.52,
+        "torqueNm": 54.72,
+        "vibrationMms": 2.25,
+        "temperatureC": 49.95
+      },
+      "R-07": {
+        "cycleTimeSec": 39.16,
+        "torqueNm": 67.43,
+        "vibrationMms": 5.36,
+        "temperatureC": 56.72
+      },
+      "R-10": {
+        "cycleTimeSec": 34.73,
+        "torqueNm": 53.11,
+        "vibrationMms": 2.12,
+        "temperatureC": 49.92
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:25:30",
+      "R-03": {
+        "cycleTimeSec": 35.43,
+        "torqueNm": 55.23,
+        "vibrationMms": 2.32,
+        "temperatureC": 50.25
+      },
+      "R-07": {
+        "cycleTimeSec": 39.21,
+        "torqueNm": 67.44,
+        "vibrationMms": 5.43,
+        "temperatureC": 56.87
+      },
+      "R-10": {
+        "cycleTimeSec": 35.52,
+        "torqueNm": 53.93,
+        "vibrationMms": 2.38,
+        "temperatureC": 49.93
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:25:40",
+      "R-03": {
+        "cycleTimeSec": 35.52,
+        "torqueNm": 56.73,
+        "vibrationMms": 2.31,
+        "temperatureC": 49.67
+      },
+      "R-07": {
+        "cycleTimeSec": 38.91,
+        "torqueNm": 67.08,
+        "vibrationMms": 5.6,
+        "temperatureC": 56.66
+      },
+      "R-10": {
+        "cycleTimeSec": 34.23,
+        "torqueNm": 56.3,
+        "vibrationMms": 2.39,
+        "temperatureC": 49.7
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:25:50",
+      "R-03": {
+        "cycleTimeSec": 34.5,
+        "torqueNm": 57.15,
+        "vibrationMms": 2.4,
+        "temperatureC": 49.82
+      },
+      "R-07": {
+        "cycleTimeSec": 39.26,
+        "torqueNm": 70.0,
+        "vibrationMms": 5.73,
+        "temperatureC": 56.33
+      },
+      "R-10": {
+        "cycleTimeSec": 35.18,
+        "torqueNm": 56.58,
+        "vibrationMms": 2.45,
+        "temperatureC": 49.66
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:26:00",
+      "R-03": {
+        "cycleTimeSec": 34.36,
+        "torqueNm": 57.0,
+        "vibrationMms": 2.5,
+        "temperatureC": 49.56
+      },
+      "R-07": {
+        "cycleTimeSec": 38.88,
+        "torqueNm": 70.94,
+        "vibrationMms": 5.85,
+        "temperatureC": 56.76
+      },
+      "R-10": {
+        "cycleTimeSec": 35.23,
+        "torqueNm": 56.3,
+        "vibrationMms": 2.56,
+        "temperatureC": 50.1
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:26:10",
+      "R-03": {
+        "cycleTimeSec": 35.84,
+        "torqueNm": 57.48,
+        "vibrationMms": 2.67,
+        "temperatureC": 49.47
+      },
+      "R-07": {
+        "cycleTimeSec": 39.6,
+        "torqueNm": 69.08,
+        "vibrationMms": 5.82,
+        "temperatureC": 56.6
+      },
+      "R-10": {
+        "cycleTimeSec": 34.99,
+        "torqueNm": 58.01,
+        "vibrationMms": 2.58,
+        "temperatureC": 49.78
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:26:20",
+      "R-03": {
+        "cycleTimeSec": 35.66,
+        "torqueNm": 58.63,
+        "vibrationMms": 2.67,
+        "temperatureC": 49.88
+      },
+      "R-07": {
+        "cycleTimeSec": 39.96,
+        "torqueNm": 69.54,
+        "vibrationMms": 5.86,
+        "temperatureC": 56.11
+      },
+      "R-10": {
+        "cycleTimeSec": 35.38,
+        "torqueNm": 58.66,
+        "vibrationMms": 2.73,
+        "temperatureC": 49.18
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:26:30",
+      "R-03": {
+        "cycleTimeSec": 35.63,
+        "torqueNm": 56.86,
+        "vibrationMms": 2.64,
+        "temperatureC": 49.53
+      },
+      "R-07": {
+        "cycleTimeSec": 40.19,
+        "torqueNm": 72.24,
+        "vibrationMms": 5.89,
+        "temperatureC": 56.5
+      },
+      "R-10": {
+        "cycleTimeSec": 35.63,
+        "torqueNm": 57.97,
+        "vibrationMms": 2.68,
+        "temperatureC": 49.69
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:26:40",
+      "R-03": {
+        "cycleTimeSec": 35.07,
+        "torqueNm": 59.53,
+        "vibrationMms": 2.6,
+        "temperatureC": 49.63
+      },
+      "R-07": {
+        "cycleTimeSec": 41.02,
+        "torqueNm": 70.43,
+        "vibrationMms": 6.08,
+        "temperatureC": 56.21
+      },
+      "R-10": {
+        "cycleTimeSec": 34.9,
+        "torqueNm": 58.48,
+        "vibrationMms": 2.64,
+        "temperatureC": 49.61
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:26:50",
+      "R-03": {
+        "cycleTimeSec": 35.64,
+        "torqueNm": 59.34,
+        "vibrationMms": 2.67,
+        "temperatureC": 49.18
+      },
+      "R-07": {
+        "cycleTimeSec": 40.14,
+        "torqueNm": 71.28,
+        "vibrationMms": 6.0,
+        "temperatureC": 56.16
+      },
+      "R-10": {
+        "cycleTimeSec": 34.82,
+        "torqueNm": 59.95,
+        "vibrationMms": 2.69,
+        "temperatureC": 49.43
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:27:00",
+      "R-03": {
+        "cycleTimeSec": 36.49,
+        "torqueNm": 58.43,
+        "vibrationMms": 2.66,
+        "temperatureC": 49.08
+      },
+      "R-07": {
+        "cycleTimeSec": 40.14,
+        "torqueNm": 71.33,
+        "vibrationMms": 5.94,
+        "temperatureC": 56.45
+      },
+      "R-10": {
+        "cycleTimeSec": 35.89,
+        "torqueNm": 58.58,
+        "vibrationMms": 2.6,
+        "temperatureC": 48.89
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:27:10",
+      "R-03": {
+        "cycleTimeSec": 35.76,
+        "torqueNm": 60.1,
+        "vibrationMms": 2.64,
+        "temperatureC": 49.03
+      },
+      "R-07": {
+        "cycleTimeSec": 41.24,
+        "torqueNm": 72.02,
+        "vibrationMms": 6.03,
+        "temperatureC": 56.4
+      },
+      "R-10": {
+        "cycleTimeSec": 36.24,
+        "torqueNm": 59.07,
+        "vibrationMms": 2.57,
+        "temperatureC": 49.14
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:27:20",
+      "R-03": {
+        "cycleTimeSec": 35.64,
+        "torqueNm": 60.01,
+        "vibrationMms": 2.58,
+        "temperatureC": 49.1
+      },
+      "R-07": {
+        "cycleTimeSec": 41.28,
+        "torqueNm": 73.49,
+        "vibrationMms": 5.84,
+        "temperatureC": 55.58
+      },
+      "R-10": {
+        "cycleTimeSec": 36.86,
+        "torqueNm": 60.68,
+        "vibrationMms": 2.62,
+        "temperatureC": 48.98
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:27:30",
+      "R-03": {
+        "cycleTimeSec": 36.36,
+        "torqueNm": 60.58,
+        "vibrationMms": 2.47,
+        "temperatureC": 48.8
+      },
+      "R-07": {
+        "cycleTimeSec": 40.63,
+        "torqueNm": 73.36,
+        "vibrationMms": 5.85,
+        "temperatureC": 55.96
+      },
+      "R-10": {
+        "cycleTimeSec": 36.82,
+        "torqueNm": 59.91,
+        "vibrationMms": 2.52,
+        "temperatureC": 48.63
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:27:40",
+      "R-03": {
+        "cycleTimeSec": 35.93,
+        "torqueNm": 59.88,
+        "vibrationMms": 2.34,
+        "temperatureC": 48.53
+      },
+      "R-07": {
+        "cycleTimeSec": 41.44,
+        "torqueNm": 75.02,
+        "vibrationMms": 5.72,
+        "temperatureC": 56.04
+      },
+      "R-10": {
+        "cycleTimeSec": 37.13,
+        "torqueNm": 60.64,
+        "vibrationMms": 2.52,
+        "temperatureC": 48.19
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:27:50",
+      "R-03": {
+        "cycleTimeSec": 36.4,
+        "torqueNm": 58.8,
+        "vibrationMms": 2.29,
+        "temperatureC": 48.39
+      },
+      "R-07": {
+        "cycleTimeSec": 42.76,
+        "torqueNm": 73.09,
+        "vibrationMms": 5.72,
+        "temperatureC": 55.6
+      },
+      "R-10": {
+        "cycleTimeSec": 36.96,
+        "torqueNm": 60.05,
+        "vibrationMms": 2.45,
+        "temperatureC": 48.15
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:28:00",
+      "R-03": {
+        "cycleTimeSec": 37.79,
+        "torqueNm": 60.99,
+        "vibrationMms": 2.29,
+        "temperatureC": 48.51
+      },
+      "R-07": {
+        "cycleTimeSec": 43.01,
+        "torqueNm": 72.72,
+        "vibrationMms": 5.64,
+        "temperatureC": 55.66
+      },
+      "R-10": {
+        "cycleTimeSec": 36.66,
+        "torqueNm": 58.47,
+        "vibrationMms": 2.2,
+        "temperatureC": 48.23
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:28:10",
+      "R-03": {
+        "cycleTimeSec": 37.67,
+        "torqueNm": 60.84,
+        "vibrationMms": 2.18,
+        "temperatureC": 48.38
+      },
+      "R-07": {
+        "cycleTimeSec": 42.18,
+        "torqueNm": 74.14,
+        "vibrationMms": 5.49,
+        "temperatureC": 55.3
+      },
+      "R-10": {
+        "cycleTimeSec": 38.45,
+        "torqueNm": 61.15,
+        "vibrationMms": 2.16,
+        "temperatureC": 47.73
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:28:20",
+      "R-03": {
+        "cycleTimeSec": 37.35,
+        "torqueNm": 61.27,
+        "vibrationMms": 2.14,
+        "temperatureC": 48.0
+      },
+      "R-07": {
+        "cycleTimeSec": 42.43,
+        "torqueNm": 75.41,
+        "vibrationMms": 5.45,
+        "temperatureC": 55.81
+      },
+      "R-10": {
+        "cycleTimeSec": 38.27,
+        "torqueNm": 60.75,
+        "vibrationMms": 2.11,
+        "temperatureC": 47.87
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:28:30",
+      "R-03": {
+        "cycleTimeSec": 37.69,
+        "torqueNm": 58.95,
+        "vibrationMms": 1.91,
+        "temperatureC": 48.08
+      },
+      "R-07": {
+        "cycleTimeSec": 43.44,
+        "torqueNm": 75.34,
+        "vibrationMms": 5.37,
+        "temperatureC": 55.56
+      },
+      "R-10": {
+        "cycleTimeSec": 37.8,
+        "torqueNm": 61.43,
+        "vibrationMms": 2.01,
+        "temperatureC": 47.81
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:28:40",
+      "R-03": {
+        "cycleTimeSec": 39.63,
+        "torqueNm": 58.55,
+        "vibrationMms": 1.86,
+        "temperatureC": 47.94
+      },
+      "R-07": {
+        "cycleTimeSec": 43.7,
+        "torqueNm": 74.94,
+        "vibrationMms": 5.41,
+        "temperatureC": 55.18
+      },
+      "R-10": {
+        "cycleTimeSec": 39.27,
+        "torqueNm": 58.47,
+        "vibrationMms": 1.83,
+        "temperatureC": 48.07
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:28:50",
+      "R-03": {
+        "cycleTimeSec": 39.08,
+        "torqueNm": 59.33,
+        "vibrationMms": 1.87,
+        "temperatureC": 47.48
+      },
+      "R-07": {
+        "cycleTimeSec": 44.66,
+        "torqueNm": 74.56,
+        "vibrationMms": 5.16,
+        "temperatureC": 55.27
+      },
+      "R-10": {
+        "cycleTimeSec": 39.63,
+        "torqueNm": 60.41,
+        "vibrationMms": 1.7,
+        "temperatureC": 47.26
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:29:00",
+      "R-03": {
+        "cycleTimeSec": 39.78,
+        "torqueNm": 60.01,
+        "vibrationMms": 1.75,
+        "temperatureC": 47.25
+      },
+      "R-07": {
+        "cycleTimeSec": 43.96,
+        "torqueNm": 72.5,
+        "vibrationMms": 5.14,
+        "temperatureC": 54.98
+      },
+      "R-10": {
+        "cycleTimeSec": 38.98,
+        "torqueNm": 58.51,
+        "vibrationMms": 1.64,
+        "temperatureC": 47.36
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:29:10",
+      "R-03": {
+        "cycleTimeSec": 39.78,
+        "torqueNm": 59.14,
+        "vibrationMms": 1.54,
+        "temperatureC": 47.15
+      },
+      "R-07": {
+        "cycleTimeSec": 44.25,
+        "torqueNm": 74.14,
+        "vibrationMms": 5.08,
+        "temperatureC": 54.91
+      },
+      "R-10": {
+        "cycleTimeSec": 39.31,
+        "torqueNm": 59.08,
+        "vibrationMms": 1.55,
+        "temperatureC": 47.59
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:29:20",
+      "R-03": {
+        "cycleTimeSec": 40.68,
+        "torqueNm": 60.61,
+        "vibrationMms": 1.59,
+        "temperatureC": 46.87
+      },
+      "R-07": {
+        "cycleTimeSec": 45.06,
+        "torqueNm": 72.58,
+        "vibrationMms": 5.03,
+        "temperatureC": 54.91
+      },
+      "R-10": {
+        "cycleTimeSec": 39.16,
+        "torqueNm": 58.98,
+        "vibrationMms": 1.56,
+        "temperatureC": 47.12
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:29:30",
+      "R-03": {
+        "cycleTimeSec": 39.43,
+        "torqueNm": 58.16,
+        "vibrationMms": 1.48,
+        "temperatureC": 47.11
+      },
+      "R-07": {
+        "cycleTimeSec": 45.71,
+        "torqueNm": 72.54,
+        "vibrationMms": 4.96,
+        "temperatureC": 54.68
+      },
+      "R-10": {
+        "cycleTimeSec": 41.0,
+        "torqueNm": 58.4,
+        "vibrationMms": 1.56,
+        "temperatureC": 47.25
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:29:40",
+      "R-03": {
+        "cycleTimeSec": 40.09,
+        "torqueNm": 58.11,
+        "vibrationMms": 1.57,
+        "temperatureC": 47.17
+      },
+      "R-07": {
+        "cycleTimeSec": 46.64,
+        "torqueNm": 72.11,
+        "vibrationMms": 4.99,
+        "temperatureC": 55.11
+      },
+      "R-10": {
+        "cycleTimeSec": 39.86,
+        "torqueNm": 58.05,
+        "vibrationMms": 1.6,
+        "temperatureC": 47.26
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:29:50",
+      "R-03": {
+        "cycleTimeSec": 40.21,
+        "torqueNm": 58.85,
+        "vibrationMms": 1.5,
+        "temperatureC": 46.82
+      },
+      "R-07": {
+        "cycleTimeSec": 45.53,
+        "torqueNm": 72.54,
+        "vibrationMms": 5.09,
+        "temperatureC": 54.59
+      },
+      "R-10": {
+        "cycleTimeSec": 39.89,
+        "torqueNm": 58.46,
+        "vibrationMms": 1.52,
+        "temperatureC": 46.8
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:30:00",
+      "R-03": {
+        "cycleTimeSec": 41.07,
+        "torqueNm": 58.05,
+        "vibrationMms": 1.6,
+        "temperatureC": 46.61
+      },
+      "R-07": {
+        "cycleTimeSec": 46.55,
+        "torqueNm": 72.42,
+        "vibrationMms": 5.0,
+        "temperatureC": 54.75
+      },
+      "R-10": {
+        "cycleTimeSec": 41.31,
+        "torqueNm": 58.79,
+        "vibrationMms": 1.49,
+        "temperatureC": 46.64
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:30:10",
+      "R-03": {
+        "cycleTimeSec": 41.1,
+        "torqueNm": 56.73,
+        "vibrationMms": 1.56,
+        "temperatureC": 46.7
+      },
+      "R-07": {
+        "cycleTimeSec": 46.84,
+        "torqueNm": 70.98,
+        "vibrationMms": 5.17,
+        "temperatureC": 54.51
+      },
+      "R-10": {
+        "cycleTimeSec": 40.68,
+        "torqueNm": 57.53,
+        "vibrationMms": 1.61,
+        "temperatureC": 46.68
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:30:20",
+      "R-03": {
+        "cycleTimeSec": 41.02,
+        "torqueNm": 57.96,
+        "vibrationMms": 1.54,
+        "temperatureC": 46.73
+      },
+      "R-07": {
+        "cycleTimeSec": 46.5,
+        "torqueNm": 72.31,
+        "vibrationMms": 5.04,
+        "temperatureC": 54.68
+      },
+      "R-10": {
+        "cycleTimeSec": 41.22,
+        "torqueNm": 56.66,
+        "vibrationMms": 1.6,
+        "temperatureC": 46.05
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:30:30",
+      "R-03": {
+        "cycleTimeSec": 41.86,
+        "torqueNm": 57.19,
+        "vibrationMms": 1.6,
+        "temperatureC": 46.51
+      },
+      "R-07": {
+        "cycleTimeSec": 47.34,
+        "torqueNm": 71.29,
+        "vibrationMms": 5.09,
+        "temperatureC": 54.2
+      },
+      "R-10": {
+        "cycleTimeSec": 41.01,
+        "torqueNm": 56.71,
+        "vibrationMms": 1.64,
+        "temperatureC": 46.37
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:30:40",
+      "R-03": {
+        "cycleTimeSec": 40.9,
+        "torqueNm": 55.87,
+        "vibrationMms": 1.75,
+        "temperatureC": 46.28
+      },
+      "R-07": {
+        "cycleTimeSec": 46.54,
+        "torqueNm": 70.63,
+        "vibrationMms": 5.17,
+        "temperatureC": 54.02
+      },
+      "R-10": {
+        "cycleTimeSec": 40.85,
+        "torqueNm": 57.58,
+        "vibrationMms": 1.61,
+        "temperatureC": 46.56
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:30:50",
+      "R-03": {
+        "cycleTimeSec": 40.33,
+        "torqueNm": 55.16,
+        "vibrationMms": 1.76,
+        "temperatureC": 45.88
+      },
+      "R-07": {
+        "cycleTimeSec": 46.5,
+        "torqueNm": 70.59,
+        "vibrationMms": 5.34,
+        "temperatureC": 54.44
+      },
+      "R-10": {
+        "cycleTimeSec": 40.65,
+        "torqueNm": 55.12,
+        "vibrationMms": 1.83,
+        "temperatureC": 45.81
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:31:00",
+      "R-03": {
+        "cycleTimeSec": 41.54,
+        "torqueNm": 55.68,
+        "vibrationMms": 1.89,
+        "temperatureC": 45.76
+      },
+      "R-07": {
+        "cycleTimeSec": 47.37,
+        "torqueNm": 69.46,
+        "vibrationMms": 5.38,
+        "temperatureC": 53.97
+      },
+      "R-10": {
+        "cycleTimeSec": 41.02,
+        "torqueNm": 56.61,
+        "vibrationMms": 1.8,
+        "temperatureC": 45.95
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:31:10",
+      "R-03": {
+        "cycleTimeSec": 40.24,
+        "torqueNm": 55.17,
+        "vibrationMms": 1.94,
+        "temperatureC": 45.57
+      },
+      "R-07": {
+        "cycleTimeSec": 46.63,
+        "torqueNm": 68.87,
+        "vibrationMms": 5.57,
+        "temperatureC": 54.11
+      },
+      "R-10": {
+        "cycleTimeSec": 41.18,
+        "torqueNm": 53.86,
+        "vibrationMms": 2.0,
+        "temperatureC": 46.19
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:31:20",
+      "R-03": {
+        "cycleTimeSec": 39.89,
+        "torqueNm": 53.05,
+        "vibrationMms": 2.12,
+        "temperatureC": 45.62
+      },
+      "R-07": {
+        "cycleTimeSec": 46.0,
+        "torqueNm": 69.19,
+        "vibrationMms": 5.61,
+        "temperatureC": 54.45
+      },
+      "R-10": {
+        "cycleTimeSec": 40.73,
+        "torqueNm": 54.67,
+        "vibrationMms": 2.07,
+        "temperatureC": 45.96
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:31:30",
+      "R-03": {
+        "cycleTimeSec": 40.67,
+        "torqueNm": 53.29,
+        "vibrationMms": 2.22,
+        "temperatureC": 45.89
+      },
+      "R-07": {
+        "cycleTimeSec": 46.73,
+        "torqueNm": 69.48,
+        "vibrationMms": 5.72,
+        "temperatureC": 54.22
+      },
+      "R-10": {
+        "cycleTimeSec": 39.76,
+        "torqueNm": 52.65,
+        "vibrationMms": 2.07,
+        "temperatureC": 45.65
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:31:40",
+      "R-03": {
+        "cycleTimeSec": 39.74,
+        "torqueNm": 53.83,
+        "vibrationMms": 2.25,
+        "temperatureC": 45.67
+      },
+      "R-07": {
+        "cycleTimeSec": 45.34,
+        "torqueNm": 68.06,
+        "vibrationMms": 5.81,
+        "temperatureC": 54.21
+      },
+      "R-10": {
+        "cycleTimeSec": 40.66,
+        "torqueNm": 53.69,
+        "vibrationMms": 2.35,
+        "temperatureC": 45.78
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:31:50",
+      "R-03": {
+        "cycleTimeSec": 40.07,
+        "torqueNm": 51.68,
+        "vibrationMms": 2.31,
+        "temperatureC": 45.64
+      },
+      "R-07": {
+        "cycleTimeSec": 44.98,
+        "torqueNm": 67.53,
+        "vibrationMms": 5.87,
+        "temperatureC": 53.79
+      },
+      "R-10": {
+        "cycleTimeSec": 40.65,
+        "torqueNm": 54.15,
+        "vibrationMms": 2.34,
+        "temperatureC": 45.68
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:32:00",
+      "R-03": {
+        "cycleTimeSec": 40.17,
+        "torqueNm": 52.02,
+        "vibrationMms": 2.5,
+        "temperatureC": 45.62
+      },
+      "R-07": {
+        "cycleTimeSec": 44.8,
+        "torqueNm": 66.1,
+        "vibrationMms": 6.12,
+        "temperatureC": 53.91
+      },
+      "R-10": {
+        "cycleTimeSec": 39.43,
+        "torqueNm": 52.39,
+        "vibrationMms": 2.36,
+        "temperatureC": 45.6
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:32:10",
+      "R-03": {
+        "cycleTimeSec": 40.0,
+        "torqueNm": 52.6,
+        "vibrationMms": 2.52,
+        "temperatureC": 45.28
+      },
+      "R-07": {
+        "cycleTimeSec": 44.61,
+        "torqueNm": 67.9,
+        "vibrationMms": 6.21,
+        "temperatureC": 53.96
+      },
+      "R-10": {
+        "cycleTimeSec": 40.14,
+        "torqueNm": 50.43,
+        "vibrationMms": 2.55,
+        "temperatureC": 45.63
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:32:20",
+      "R-03": {
+        "cycleTimeSec": 40.15,
+        "torqueNm": 50.15,
+        "vibrationMms": 2.64,
+        "temperatureC": 45.76
+      },
+      "R-07": {
+        "cycleTimeSec": 44.66,
+        "torqueNm": 68.16,
+        "vibrationMms": 6.21,
+        "temperatureC": 53.95
+      },
+      "R-10": {
+        "cycleTimeSec": 39.84,
+        "torqueNm": 51.16,
+        "vibrationMms": 2.68,
+        "temperatureC": 45.78
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:32:30",
+      "R-03": {
+        "cycleTimeSec": 38.48,
+        "torqueNm": 51.84,
+        "vibrationMms": 2.65,
+        "temperatureC": 45.41
+      },
+      "R-07": {
+        "cycleTimeSec": 45.12,
+        "torqueNm": 66.65,
+        "vibrationMms": 6.22,
+        "temperatureC": 53.79
+      },
+      "R-10": {
+        "cycleTimeSec": 38.43,
+        "torqueNm": 50.03,
+        "vibrationMms": 2.54,
+        "temperatureC": 45.41
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:32:40",
+      "R-03": {
+        "cycleTimeSec": 38.24,
+        "torqueNm": 50.6,
+        "vibrationMms": 2.63,
+        "temperatureC": 45.68
+      },
+      "R-07": {
+        "cycleTimeSec": 44.06,
+        "torqueNm": 65.18,
+        "vibrationMms": 6.4,
+        "temperatureC": 54.48
+      },
+      "R-10": {
+        "cycleTimeSec": 38.96,
+        "torqueNm": 49.27,
+        "vibrationMms": 2.76,
+        "temperatureC": 45.74
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:32:50",
+      "R-03": {
+        "cycleTimeSec": 39.06,
+        "torqueNm": 51.57,
+        "vibrationMms": 2.77,
+        "temperatureC": 45.2
+      },
+      "R-07": {
+        "cycleTimeSec": 44.79,
+        "torqueNm": 64.77,
+        "vibrationMms": 6.4,
+        "temperatureC": 54.38
+      },
+      "R-10": {
+        "cycleTimeSec": 38.78,
+        "torqueNm": 50.62,
+        "vibrationMms": 2.69,
+        "temperatureC": 45.57
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:33:00",
+      "R-03": {
+        "cycleTimeSec": 37.56,
+        "torqueNm": 49.47,
+        "vibrationMms": 2.69,
+        "temperatureC": 45.61
+      },
+      "R-07": {
+        "cycleTimeSec": 44.5,
+        "torqueNm": 63.97,
+        "vibrationMms": 6.38,
+        "temperatureC": 53.97
+      },
+      "R-10": {
+        "cycleTimeSec": 38.76,
+        "torqueNm": 49.34,
+        "vibrationMms": 2.79,
+        "temperatureC": 45.36
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:33:10",
+      "R-03": {
+        "cycleTimeSec": 36.75,
+        "torqueNm": 50.22,
+        "vibrationMms": 2.74,
+        "temperatureC": 45.69
+      },
+      "R-07": {
+        "cycleTimeSec": 43.43,
+        "torqueNm": 65.38,
+        "vibrationMms": 6.34,
+        "temperatureC": 53.84
+      },
+      "R-10": {
+        "cycleTimeSec": 37.7,
+        "torqueNm": 48.55,
+        "vibrationMms": 2.68,
+        "temperatureC": 45.27
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:33:20",
+      "R-03": {
+        "cycleTimeSec": 36.9,
+        "torqueNm": 50.07,
+        "vibrationMms": 2.63,
+        "temperatureC": 45.58
+      },
+      "R-07": {
+        "cycleTimeSec": 43.31,
+        "torqueNm": 64.57,
+        "vibrationMms": 6.32,
+        "temperatureC": 54.38
+      },
+      "R-10": {
+        "cycleTimeSec": 36.5,
+        "torqueNm": 47.89,
+        "vibrationMms": 2.72,
+        "temperatureC": 45.48
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:33:30",
+      "R-03": {
+        "cycleTimeSec": 36.32,
+        "torqueNm": 49.89,
+        "vibrationMms": 2.61,
+        "temperatureC": 45.14
+      },
+      "R-07": {
+        "cycleTimeSec": 43.72,
+        "torqueNm": 63.48,
+        "vibrationMms": 6.35,
+        "temperatureC": 53.99
+      },
+      "R-10": {
+        "cycleTimeSec": 37.26,
+        "torqueNm": 47.8,
+        "vibrationMms": 2.71,
+        "temperatureC": 45.36
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:33:40",
+      "R-03": {
+        "cycleTimeSec": 36.96,
+        "torqueNm": 47.84,
+        "vibrationMms": 2.54,
+        "temperatureC": 45.89
+      },
+      "R-07": {
+        "cycleTimeSec": 42.0,
+        "torqueNm": 63.86,
+        "vibrationMms": 6.22,
+        "temperatureC": 54.5
+      },
+      "R-10": {
+        "cycleTimeSec": 36.21,
+        "torqueNm": 49.05,
+        "vibrationMms": 2.61,
+        "temperatureC": 45.16
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:33:50",
+      "R-03": {
+        "cycleTimeSec": 36.35,
+        "torqueNm": 47.29,
+        "vibrationMms": 2.44,
+        "temperatureC": 45.74
+      },
+      "R-07": {
+        "cycleTimeSec": 41.45,
+        "torqueNm": 64.6,
+        "vibrationMms": 6.26,
+        "temperatureC": 54.8
+      },
+      "R-10": {
+        "cycleTimeSec": 36.26,
+        "torqueNm": 47.29,
+        "vibrationMms": 2.41,
+        "temperatureC": 45.51
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:34:00",
+      "R-03": {
+        "cycleTimeSec": 36.54,
+        "torqueNm": 47.04,
+        "vibrationMms": 2.38,
+        "temperatureC": 45.95
+      },
+      "R-07": {
+        "cycleTimeSec": 41.42,
+        "torqueNm": 64.7,
+        "vibrationMms": 6.17,
+        "temperatureC": 54.19
+      },
+      "R-10": {
+        "cycleTimeSec": 37.01,
+        "torqueNm": 47.16,
+        "vibrationMms": 2.42,
+        "temperatureC": 45.25
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:34:10",
+      "R-03": {
+        "cycleTimeSec": 36.15,
+        "torqueNm": 47.93,
+        "vibrationMms": 2.37,
+        "temperatureC": 45.79
+      },
+      "R-07": {
+        "cycleTimeSec": 41.22,
+        "torqueNm": 63.53,
+        "vibrationMms": 6.08,
+        "temperatureC": 54.85
+      },
+      "R-10": {
+        "cycleTimeSec": 35.13,
+        "torqueNm": 46.92,
+        "vibrationMms": 2.38,
+        "temperatureC": 45.76
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:34:20",
+      "R-03": {
+        "cycleTimeSec": 35.45,
+        "torqueNm": 49.43,
+        "vibrationMms": 2.2,
+        "temperatureC": 45.46
+      },
+      "R-07": {
+        "cycleTimeSec": 41.24,
+        "torqueNm": 62.5,
+        "vibrationMms": 5.96,
+        "temperatureC": 54.73
+      },
+      "R-10": {
+        "cycleTimeSec": 35.85,
+        "torqueNm": 48.87,
+        "vibrationMms": 2.27,
+        "temperatureC": 46.03
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:34:30",
+      "R-03": {
+        "cycleTimeSec": 35.75,
+        "torqueNm": 47.41,
+        "vibrationMms": 2.14,
+        "temperatureC": 45.82
+      },
+      "R-07": {
+        "cycleTimeSec": 41.91,
+        "torqueNm": 63.13,
+        "vibrationMms": 5.77,
+        "temperatureC": 55.06
+      },
+      "R-10": {
+        "cycleTimeSec": 36.28,
+        "torqueNm": 47.99,
+        "vibrationMms": 2.06,
+        "temperatureC": 45.81
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:34:40",
+      "R-03": {
+        "cycleTimeSec": 35.47,
+        "torqueNm": 48.09,
+        "vibrationMms": 2.13,
+        "temperatureC": 46.27
+      },
+      "R-07": {
+        "cycleTimeSec": 42.1,
+        "torqueNm": 62.67,
+        "vibrationMms": 5.83,
+        "temperatureC": 54.9
+      },
+      "R-10": {
+        "cycleTimeSec": 35.06,
+        "torqueNm": 48.56,
+        "vibrationMms": 2.09,
+        "temperatureC": 46.25
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:34:50",
+      "R-03": {
+        "cycleTimeSec": 35.66,
+        "torqueNm": 46.61,
+        "vibrationMms": 1.85,
+        "temperatureC": 45.77
+      },
+      "R-07": {
+        "cycleTimeSec": 40.38,
+        "torqueNm": 62.53,
+        "vibrationMms": 5.72,
+        "temperatureC": 54.95
+      },
+      "R-10": {
+        "cycleTimeSec": 35.4,
+        "torqueNm": 48.06,
+        "vibrationMms": 1.92,
+        "temperatureC": 46.12
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:35:00",
+      "R-03": {
+        "cycleTimeSec": 34.33,
+        "torqueNm": 48.26,
+        "vibrationMms": 1.87,
+        "temperatureC": 45.86
+      },
+      "R-07": {
+        "cycleTimeSec": 40.79,
+        "torqueNm": 64.0,
+        "vibrationMms": 5.52,
+        "temperatureC": 55.31
+      },
+      "R-10": {
+        "cycleTimeSec": 35.14,
+        "torqueNm": 47.82,
+        "vibrationMms": 1.87,
+        "temperatureC": 46.31
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:35:10",
+      "R-03": {
+        "cycleTimeSec": 35.35,
+        "torqueNm": 46.97,
+        "vibrationMms": 1.8,
+        "temperatureC": 46.32
+      },
+      "R-07": {
+        "cycleTimeSec": 41.71,
+        "torqueNm": 62.79,
+        "vibrationMms": 5.41,
+        "temperatureC": 55.13
+      },
+      "R-10": {
+        "cycleTimeSec": 34.94,
+        "torqueNm": 48.6,
+        "vibrationMms": 1.72,
+        "temperatureC": 46.32
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:35:20",
+      "R-03": {
+        "cycleTimeSec": 35.43,
+        "torqueNm": 47.3,
+        "vibrationMms": 1.72,
+        "temperatureC": 46.39
+      },
+      "R-07": {
+        "cycleTimeSec": 40.48,
+        "torqueNm": 65.67,
+        "vibrationMms": 5.43,
+        "temperatureC": 55.53
+      },
+      "R-10": {
+        "cycleTimeSec": 35.4,
+        "torqueNm": 47.45,
+        "vibrationMms": 1.61,
+        "temperatureC": 46.45
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:35:30",
+      "R-03": {
+        "cycleTimeSec": 34.6,
+        "torqueNm": 49.81,
+        "vibrationMms": 1.67,
+        "temperatureC": 45.95
+      },
+      "R-07": {
+        "cycleTimeSec": 41.67,
+        "torqueNm": 63.86,
+        "vibrationMms": 5.27,
+        "temperatureC": 55.6
+      },
+      "R-10": {
+        "cycleTimeSec": 35.15,
+        "torqueNm": 47.39,
+        "vibrationMms": 1.61,
+        "temperatureC": 46.22
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:35:40",
+      "R-03": {
+        "cycleTimeSec": 35.07,
+        "torqueNm": 49.1,
+        "vibrationMms": 1.54,
+        "temperatureC": 46.24
+      },
+      "R-07": {
+        "cycleTimeSec": 40.47,
+        "torqueNm": 65.04,
+        "vibrationMms": 5.36,
+        "temperatureC": 55.34
+      },
+      "R-10": {
+        "cycleTimeSec": 35.09,
+        "torqueNm": 47.53,
+        "vibrationMms": 1.64,
+        "temperatureC": 46.23
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:35:50",
+      "R-03": {
+        "cycleTimeSec": 35.11,
+        "torqueNm": 48.83,
+        "vibrationMms": 1.46,
+        "temperatureC": 46.89
+      },
+      "R-07": {
+        "cycleTimeSec": 41.93,
+        "torqueNm": 65.28,
+        "vibrationMms": 5.36,
+        "temperatureC": 55.89
+      },
+      "R-10": {
+        "cycleTimeSec": 35.01,
+        "torqueNm": 48.65,
+        "vibrationMms": 1.51,
+        "temperatureC": 46.72
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:36:00",
+      "R-03": {
+        "cycleTimeSec": 34.87,
+        "torqueNm": 48.23,
+        "vibrationMms": 1.48,
+        "temperatureC": 46.66
+      },
+      "R-07": {
+        "cycleTimeSec": 42.15,
+        "torqueNm": 64.5,
+        "vibrationMms": 5.32,
+        "temperatureC": 56.23
+      },
+      "R-10": {
+        "cycleTimeSec": 36.1,
+        "torqueNm": 48.2,
+        "vibrationMms": 1.5,
+        "temperatureC": 46.48
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:36:10",
+      "R-03": {
+        "cycleTimeSec": 36.06,
+        "torqueNm": 49.32,
+        "vibrationMms": 1.51,
+        "temperatureC": 46.38
+      },
+      "R-07": {
+        "cycleTimeSec": 41.06,
+        "torqueNm": 66.02,
+        "vibrationMms": 5.22,
+        "temperatureC": 56.08
+      },
+      "R-10": {
+        "cycleTimeSec": 35.38,
+        "torqueNm": 50.11,
+        "vibrationMms": 1.5,
+        "temperatureC": 47.0
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:36:20",
+      "R-03": {
+        "cycleTimeSec": 35.08,
+        "torqueNm": 51.42,
+        "vibrationMms": 1.56,
+        "temperatureC": 46.7
+      },
+      "R-07": {
+        "cycleTimeSec": 40.91,
+        "torqueNm": 65.96,
+        "vibrationMms": 5.22,
+        "temperatureC": 56.01
+      },
+      "R-10": {
+        "cycleTimeSec": 36.24,
+        "torqueNm": 51.35,
+        "vibrationMms": 1.6,
+        "temperatureC": 46.5
+      }
+    },
+    {
+      "timestamp": "2026-06-15T09:36:30",
+      "R-03": {
+        "cycleTimeSec": 36.13,
+        "torqueNm": 51.66,
+        "vibrationMms": 1.59,
+        "temperatureC": 46.71
+      },
+      "R-07": {
+        "cycleTimeSec": 42.09,
+        "torqueNm": 65.86,
+        "vibrationMms": 5.31,
+        "temperatureC": 55.93
+      },
+      "R-10": {
+        "cycleTimeSec": 36.74,
+        "torqueNm": 51.25,
+        "vibrationMms": 1.46,
+        "temperatureC": 47.36
+      }
+    }
+  ],
+  "defectEvents": [
+    {
+      "id": "D-1001",
+      "timeStart": 6.2,
+      "timeEnd": 8.4,
+      "label": "Surface scratch",
+      "partId": "BX-2041",
+      "cell": "Cell 3",
+      "robotId": "R-07",
+      "confidence": 0.94,
+      "severity": "High",
+      "bbox": {
+        "x": 0.665,
+        "y": 0.645,
+        "w": 0.13,
+        "h": 0.13
+      },
+      "action": "Hold batch and inspect gripper alignment"
+    },
+    {
+      "id": "D-1002",
+      "timeStart": 12.5,
+      "timeEnd": 14.8,
+      "label": "Edge dent",
+      "partId": "BX-2048",
+      "cell": "Cell 3",
+      "robotId": "R-07",
+      "confidence": 0.89,
+      "severity": "Medium",
+      "bbox": {
+        "x": 0.66,
+        "y": 0.64,
+        "w": 0.13,
+        "h": 0.13
+      },
+      "action": "Increase sampling rate to 100% for next 25 parts"
+    },
+    {
+      "id": "D-1003",
+      "timeStart": 18.1,
+      "timeEnd": 20.7,
+      "label": "Coating discoloration",
+      "partId": "BX-2055",
+      "cell": "Cell 4",
+      "robotId": "R-10",
+      "confidence": 0.86,
+      "severity": "Medium",
+      "bbox": {
+        "x": 0.66,
+        "y": 0.64,
+        "w": 0.13,
+        "h": 0.13
+      },
+      "action": "Notify quality lead and compare paint temperature profile"
+    }
+  ],
+  "sops": [
+    {
+      "id": "SOP-R07-GRIPPER-ALIGN-001",
+      "title": "Robot R-07 Gripper Alignment & Calibration",
+      "asset": "Robot R-07",
+      "category": "Maintenance",
+      "estimatedTimeMin": 18,
+      "risk": "Medium",
+      "tags": [
+        "gripper",
+        "alignment",
+        "torque",
+        "defect",
+        "calibration"
+      ],
+      "trigger": "Defect rate increase with torque variance above baseline",
+      "steps": [
+        "Move cell to safe inspection state and pause infeed conveyor.",
+        "Lock out motion path and verify operator safety perimeter.",
+        "Inspect gripper jaw parallelism using 0.05 mm gauge.",
+        "Check end-effector mounting bolts and cable dress tension.",
+        "Run torque zero calibration routine from teach pendant.",
+        "Execute five-part validation cycle and compare defect confidence below 20%.",
+        "Log intervention notes and close work order after quality approval."
+      ],
+      "acceptanceCriteria": [
+        "Torque variance returns below 8% of baseline",
+        "Surface scratch confidence below 20% for 20 consecutive parts",
+        "Cycle time returns within 3 seconds of takt target"
+      ]
+    },
+    {
+      "id": "SOP-VISION-RECAL-002",
+      "title": "Vision Camera Recalibration for Conveyor Inspection",
+      "asset": "Vision Arch VA-03",
+      "category": "Quality",
+      "estimatedTimeMin": 12,
+      "risk": "Low",
+      "tags": [
+        "vision",
+        "camera",
+        "calibration",
+        "lighting",
+        "inspection"
+      ],
+      "trigger": "False positive rate exceeds threshold or lighting drift detected",
+      "steps": [
+        "Clean lens and verify LED light bar intensity.",
+        "Place reference calibration plate on conveyor.",
+        "Run calibration wizard and validate bounding box alignment.",
+        "Capture 10 golden samples and 10 known defect samples.",
+        "Approve calibration only if detection precision exceeds 95%."
+      ],
+      "acceptanceCriteria": [
+        "Bounding-box drift below 3 pixels",
+        "Inspection confidence stable above 90%"
+      ]
+    },
+    {
+      "id": "SOP-PM-SERVO-003",
+      "title": "Servo Drive Temperature & Vibration Check",
+      "asset": "Servo Drive Group",
+      "category": "Predictive Maintenance",
+      "estimatedTimeMin": 25,
+      "risk": "Medium",
+      "tags": [
+        "servo",
+        "temperature",
+        "vibration",
+        "predictive",
+        "maintenance"
+      ],
+      "trigger": "RUL below 60 hours or temperature above 65\u00b0C",
+      "steps": [
+        "Review trend of temperature, vibration and cycle time.",
+        "Inspect servo cabinet cooling and filters.",
+        "Check abnormal vibration at robot base and joint axis.",
+        "Compare alarm logs for repeated overload conditions.",
+        "Schedule planned service if RUL remains below 72 hours."
+      ],
+      "acceptanceCriteria": [
+        "Temperature below 58\u00b0C for four hours",
+        "Vibration below 3.5 mm/s"
+      ]
+    },
+    {
+      "id": "SOP-BATCH-HOLD-004",
+      "title": "Quality Batch Hold & Release Procedure",
+      "asset": "Quality Gate",
+      "category": "Quality",
+      "estimatedTimeMin": 10,
+      "risk": "Low",
+      "tags": [
+        "batch",
+        "hold",
+        "quality",
+        "release",
+        "defect"
+      ],
+      "trigger": "High-severity defect detected on two or more parts in same batch",
+      "steps": [
+        "Place current batch on digital hold.",
+        "Notify quality engineer and production supervisor.",
+        "Sample 15 parts upstream and downstream.",
+        "Link defect images to batch record.",
+        "Release batch only after root cause is marked resolved."
+      ],
+      "acceptanceCriteria": [
+        "No repeat high-severity defect across validation sample",
+        "Supervisor approval captured"
+      ]
+    }
+  ],
+  "workOrders": [
+    {
+      "id": "WO-260615-071",
+      "title": "Inspect gripper alignment causing surface scratches",
+      "asset": "Robot R-07",
+      "priority": "High",
+      "status": "Open",
+      "created": "2026-06-15T09:12:00",
+      "owner": "Maintenance Lead",
+      "estimatedTimeMin": 18,
+      "linkedEvents": [
+        "D-1001",
+        "D-1002"
+      ],
+      "recommendedSop": "SOP-R07-GRIPPER-ALIGN-001",
+      "businessImpact": "Avoids projected 2.4h downtime and \u20b94.8L scrap exposure"
+    },
+    {
+      "id": "WO-260615-054",
+      "title": "Calibrate Vision Arch VA-03 lighting profile",
+      "asset": "Vision Arch VA-03",
+      "priority": "Medium",
+      "status": "In Progress",
+      "created": "2026-06-15T08:35:00",
+      "owner": "Quality Engineer",
+      "estimatedTimeMin": 12,
+      "linkedEvents": [
+        "D-1002"
+      ],
+      "recommendedSop": "SOP-VISION-RECAL-002",
+      "businessImpact": "Reduces false positive inspection holds by estimated 18%"
+    },
+    {
+      "id": "WO-260614-221",
+      "title": "Preventive check on servo cabinet cooling",
+      "asset": "Servo Drive Cabinet SDC-2",
+      "priority": "Medium",
+      "status": "Scheduled",
+      "created": "2026-06-14T17:40:00",
+      "owner": "Shift B Technician",
+      "estimatedTimeMin": 25,
+      "linkedEvents": [],
+      "recommendedSop": "SOP-PM-SERVO-003",
+      "businessImpact": "Protects against unplanned thermal trip on Cell 5"
+    }
+  ],
+  "contracts": [
+    {
+      "id": "CTR-FANUC-AIONOS-REF-001",
+      "name": "Reference Implementation Scope - Industrial AI Command Center",
+      "type": "Demo SOW",
+      "effectiveDate": "2026-06-01",
+      "owner": "AIonOS Solution Office",
+      "summary": "Covers a static reference implementation using synthetic robot telemetry, simulated vision feed, SOP knowledge base, and agentic workflow orchestration for client demonstration.",
+      "clauses": [
+        "No customer production data is required for the demo.",
+        "Synthetic telemetry must be clearly tagged as demo data.",
+        "Production integration requires read-only access to shopfloor systems and SOP repositories."
+      ]
+    },
+    {
+      "id": "CTR-MAINT-SLA-2026-014",
+      "name": "Sample Maintenance Response SLA",
+      "type": "Synthetic Contract",
+      "effectiveDate": "2026-04-01",
+      "owner": "Plant Maintenance",
+      "summary": "Defines response targets for critical robot cells, priority classification, and escalation owners.",
+      "clauses": [
+        "High priority work orders must be acknowledged within 15 minutes.",
+        "Critical robot stoppage must be triaged within 30 minutes.",
+        "Quality-linked maintenance events require supervisor approval before closure."
+      ]
+    }
+  ],
+  "pastDataSheets": [
+    {
+      "date": "2026-06-01",
+      "shift": "A",
+      "oee": 83.4,
+      "throughputUnits": 1099,
+      "defectRatePct": 2.47,
+      "downtimeMin": 41,
+      "topLossReason": "Minor stoppage"
+    },
+    {
+      "date": "2026-06-02",
+      "shift": "A",
+      "oee": 85.2,
+      "throughputUnits": 944,
+      "defectRatePct": 2.6,
+      "downtimeMin": 50,
+      "topLossReason": "Changeover"
+    },
+    {
+      "date": "2026-06-03",
+      "shift": "A",
+      "oee": 83.9,
+      "throughputUnits": 1071,
+      "defectRatePct": 2.35,
+      "downtimeMin": 54,
+      "topLossReason": "Material wait"
+    },
+    {
+      "date": "2026-06-04",
+      "shift": "A",
+      "oee": 81.6,
+      "throughputUnits": 980,
+      "defectRatePct": 2.23,
+      "downtimeMin": 36,
+      "topLossReason": "Vision hold"
+    },
+    {
+      "date": "2026-06-05",
+      "shift": "A",
+      "oee": 81.8,
+      "throughputUnits": 1020,
+      "defectRatePct": 2.67,
+      "downtimeMin": 62,
+      "topLossReason": "Vision hold"
+    },
+    {
+      "date": "2026-06-06",
+      "shift": "A",
+      "oee": 84.4,
+      "throughputUnits": 939,
+      "defectRatePct": 2.25,
+      "downtimeMin": 30,
+      "topLossReason": "Changeover"
+    },
+    {
+      "date": "2026-06-07",
+      "shift": "A",
+      "oee": 83.2,
+      "throughputUnits": 959,
+      "defectRatePct": 2.72,
+      "downtimeMin": 24,
+      "topLossReason": "Changeover"
+    },
+    {
+      "date": "2026-06-08",
+      "shift": "A",
+      "oee": 84.2,
+      "throughputUnits": 950,
+      "defectRatePct": 2.48,
+      "downtimeMin": 52,
+      "topLossReason": "Vision hold"
+    },
+    {
+      "date": "2026-06-09",
+      "shift": "A",
+      "oee": 84.7,
+      "throughputUnits": 998,
+      "defectRatePct": 3.01,
+      "downtimeMin": 47,
+      "topLossReason": "Vision hold"
+    },
+    {
+      "date": "2026-06-10",
+      "shift": "A",
+      "oee": 85.1,
+      "throughputUnits": 1095,
+      "defectRatePct": 2.97,
+      "downtimeMin": 37,
+      "topLossReason": "Material wait"
+    },
+    {
+      "date": "2026-06-11",
+      "shift": "A",
+      "oee": 79.6,
+      "throughputUnits": 957,
+      "defectRatePct": 3.75,
+      "downtimeMin": 43,
+      "topLossReason": "Robot R-07 micro-stops"
+    },
+    {
+      "date": "2026-06-12",
+      "shift": "A",
+      "oee": 79.1,
+      "throughputUnits": 1021,
+      "defectRatePct": 4.26,
+      "downtimeMin": 70,
+      "topLossReason": "Robot R-07 micro-stops"
+    },
+    {
+      "date": "2026-06-13",
+      "shift": "A",
+      "oee": 81.8,
+      "throughputUnits": 964,
+      "defectRatePct": 3.72,
+      "downtimeMin": 39,
+      "topLossReason": "Robot R-07 micro-stops"
+    },
+    {
+      "date": "2026-06-14",
+      "shift": "A",
+      "oee": 79.6,
+      "throughputUnits": 1062,
+      "defectRatePct": 4.6,
+      "downtimeMin": 85,
+      "topLossReason": "Robot R-07 micro-stops"
+    },
+    {
+      "date": "2026-06-15",
+      "shift": "A",
+      "oee": 82.6,
+      "throughputUnits": 946,
+      "defectRatePct": 4.3,
+      "downtimeMin": 46,
+      "topLossReason": "Robot R-07 micro-stops"
+    }
+  ],
+  "knowledgeQuestions": [
+    {
+      "q": "Why is Robot R-07 producing defects?",
+      "intent": "diagnosis",
+      "answer": "Robot R-07 shows rising torque variance, vibration above the 5.5 mm/s warning band, and increased cycle time. The most likely root cause is gripper alignment drift or tool wear. Run SOP-R07-GRIPPER-ALIGN-001."
+    },
+    {
+      "q": "Show SOP for gripper calibration",
+      "intent": "sop",
+      "answer": "Use SOP-R07-GRIPPER-ALIGN-001. It takes approximately 18 minutes and requires safe inspection state, gripper jaw parallelism check, torque zero calibration, and five-part validation cycle."
+    },
+    {
+      "q": "What is the business impact?",
+      "intent": "impact",
+      "answer": "If unresolved, the simulated model projects 2.4 hours of downtime risk, 3.8 percentage point scrap increase, and \u20b94.8L scrap exposure. Recommended action is a micro-stop inspection before the next production batch."
+    },
+    {
+      "q": "Create a work order",
+      "intent": "workorder",
+      "answer": "A high-priority work order should be created for Robot R-07 with the title: Inspect gripper alignment causing surface scratches. Link events D-1001 and D-1002 and attach SOP-R07-GRIPPER-ALIGN-001."
+    }
+  ]
+}
