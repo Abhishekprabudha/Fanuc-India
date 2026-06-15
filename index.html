@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FANUC Industrial AI Command Center | AIonOS Demo</title>
+  <meta name="description" content="Static GitHub Pages demo for FANUC Industrial AI use cases: robot telemetry, vision defect detection, predictive maintenance, SOP copilot, work orders, and dashboard." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand-block">
+        <div class="brand-mark">AI</div>
+        <div>
+          <div class="brand-title">AIonOS</div>
+          <div class="brand-subtitle">Industrial AI for FANUC India</div>
+        </div>
+      </div>
+      <nav class="side-nav">
+        <button data-target="overview" class="nav-link active">Command Center</button>
+        <button data-target="vision" class="nav-link">Vision AI</button>
+        <button data-target="telemetry" class="nav-link">Robot Telemetry</button>
+        <button data-target="maintenance" class="nav-link">Predictive Maintenance</button>
+        <button data-target="copilot" class="nav-link">SOP Copilot</button>
+        <button data-target="workorders" class="nav-link">Work Orders</button>
+        <button data-target="evidence" class="nav-link">Data & Contracts</button>
+      </nav>
+      <div class="side-card">
+        <div class="muted small">Demo mode</div>
+        <strong>Static GitHub Pages</strong>
+        <p>No backend. All video, telemetry, SOPs, work orders, contracts and history are loaded from JSON.</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">FANUC Industrial AI Platform</p>
+          <h1>Live Factory Intelligence Command Center</h1>
+        </div>
+        <div class="top-actions">
+          <button id="startScenarioBtn" class="primary-btn">Start live scenario</button>
+          <button id="resetScenarioBtn" class="ghost-btn">Reset</button>
+          <button id="exportJsonBtn" class="ghost-btn">Export JSON</button>
+          <label class="ghost-btn file-label">Import JSON<input id="importJsonInput" type="file" accept="application/json" /></label>
+        </div>
+      </header>
+
+      <section class="hero-grid" id="overview">
+        <div class="hero-card span-2">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Unified incident story</p>
+              <h2>From defect detection to work order in one AI workflow</h2>
+            </div>
+            <span class="live-pill"><span></span> Live simulation</span>
+          </div>
+          <div class="scenario-steps" id="scenarioSteps"></div>
+        </div>
+        <div class="agent-card">
+          <p class="eyebrow">Supervisor Agent</p>
+          <h3 id="agentHeadline">Awaiting shopfloor signal</h3>
+          <p id="agentSummary">Press “Start live scenario” to trigger a full chain across Vision AI, Robot Health, Predictive Maintenance, SOP Copilot and Work Orders.</p>
+          <div class="agent-meter"><div id="agentMeterFill"></div></div>
+          <div class="agent-tags" id="agentTags"></div>
+        </div>
+      </section>
+
+      <section class="kpi-grid" id="kpiGrid"></section>
+
+      <section class="content-grid">
+        <div class="panel span-2" id="vision">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Vision AI</p>
+              <h2>Real-time defect detection feed</h2>
+            </div>
+            <div class="status-chip" id="visionStatus">Monitoring</div>
+          </div>
+          <div class="video-wrap">
+            <video id="demoVideo" src="assets/robot_inspection_demo.mp4" muted loop playsinline controls></video>
+            <canvas id="visionOverlay"></canvas>
+            <div class="video-hud top-left">
+              <strong>Camera VA-03</strong><br />Conveyor inspection cell
+            </div>
+            <div class="video-hud bottom-right" id="visionHud">No defect active</div>
+          </div>
+          <div class="event-strip" id="defectEventStrip"></div>
+        </div>
+
+        <div class="panel" id="telemetry">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Robot Telemetry</p>
+              <h2>Robot R-07 health drift</h2>
+            </div>
+            <span class="status-chip warn">Warning</span>
+          </div>
+          <div class="telemetry-focus" id="telemetryFocus"></div>
+          <canvas id="telemetryChart" class="chart"></canvas>
+          <div class="legend-row">
+            <span><b class="dot torque"></b>Torque</span>
+            <span><b class="dot vibration"></b>Vibration</span>
+            <span><b class="dot temp"></b>Temperature</span>
+          </div>
+        </div>
+
+        <div class="panel span-3 robot-panel">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Factory digital twin</p>
+              <h2>Robot fleet telemetry cards</h2>
+            </div>
+            <span class="muted small">Synthetic fleet: 12 visible robot cells</span>
+          </div>
+          <div class="robot-grid" id="robotGrid"></div>
+        </div>
+
+        <div class="panel" id="maintenance">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Predictive Maintenance</p>
+              <h2>Failure risk and RUL</h2>
+            </div>
+            <span class="status-chip danger">High risk</span>
+          </div>
+          <div class="risk-gauge">
+            <svg viewBox="0 0 200 110" aria-label="risk gauge">
+              <path d="M20 100 A80 80 0 0 1 180 100" class="gauge-bg" />
+              <path id="riskArc" d="M20 100 A80 80 0 0 1 180 100" class="gauge-fill" />
+            </svg>
+            <div class="gauge-value"><span id="riskScore">0</span><small>% risk</small></div>
+          </div>
+          <div id="maintenanceInsights" class="insight-list"></div>
+        </div>
+
+        <div class="panel span-2" id="copilot">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">SOP Copilot</p>
+              <h2>Ask the industrial knowledge agent</h2>
+            </div>
+            <span class="status-chip">RAG simulation</span>
+          </div>
+          <div class="quick-prompts" id="quickPrompts"></div>
+          <div class="copilot-box">
+            <div class="chat-window" id="chatWindow"></div>
+            <form id="copilotForm" class="chat-form">
+              <input id="copilotInput" type="text" placeholder="Ask: why is Robot R-07 producing defects?" autocomplete="off" />
+              <button class="primary-btn" type="submit">Ask</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="panel span-3" id="workorders">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Agentic workflow automation</p>
+              <h2>Work orders generated from AI incidents</h2>
+            </div>
+            <button id="createWorkOrderBtn" class="primary-btn small-btn">Create AI work order</button>
+          </div>
+          <div class="table-wrap"><table id="workOrderTable"></table></div>
+        </div>
+
+        <div class="panel span-3" id="evidence">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Evidence pack</p>
+              <h2>Contracts, SOPs and historical production sheets stored as JSON</h2>
+            </div>
+            <span class="muted small">Everything is reproducible from data/demo-data.json</span>
+          </div>
+          <div class="evidence-grid">
+            <div>
+              <h3>Sample contracts</h3>
+              <div id="contractList" class="doc-list"></div>
+            </div>
+            <div>
+              <h3>Past production data sheets</h3>
+              <canvas id="historyChart" class="chart short"></canvas>
+            </div>
+            <div>
+              <h3>SOP library</h3>
+              <div id="sopList" class="doc-list"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <span>Built as a static AIonOS reference implementation for FANUC India demo conversations.</span>
+        <span>Synthetic data only. No backend required.</span>
+      </footer>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
