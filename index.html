@@ -79,12 +79,20 @@
             <div class="status-chip" id="visionStatus">Monitoring</div>
           </div>
           <div class="video-wrap">
-            <video id="demoVideo" src="assets/robot_inspection_demo.mp4" muted loop playsinline controls></video>
+            <video id="demoVideo" muted loop playsinline controls autoplay preload="auto">
+              <source src="assets/robot_inspection_demo.mp4" type="video/mp4" />
+              Your browser does not support HTML5 video.
+            </video>
             <canvas id="visionOverlay"></canvas>
             <div class="video-hud top-left">
               <strong>Camera VA-03</strong><br />Conveyor inspection cell
             </div>
             <div class="video-hud bottom-right" id="visionHud">No defect active</div>
+            <button id="videoPlayBtn" class="video-play-btn" type="button" hidden>Play inspection feed</button>
+            <div id="videoError" class="video-error" role="alert" hidden>
+              <strong>Inspection feed unavailable</strong>
+              <span>The browser could not load the demo video.</span>
+            </div>
           </div>
           <div class="event-strip" id="defectEventStrip"></div>
         </div>
