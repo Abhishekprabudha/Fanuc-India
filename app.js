@@ -216,6 +216,8 @@ function renderEvidence() {
 function setupVideoOverlay() {
   const video = $('#demoVideo');
   const canvas = $('#visionOverlay');
+  const playButton = $('#videoPlayBtn');
+  const errorMessage = $('#videoError');
   const ctx = canvas.getContext('2d');
   const resize = () => {
     const rect = canvas.getBoundingClientRect();
@@ -226,8 +228,26 @@ function setupVideoOverlay() {
   resize();
   window.addEventListener('resize', resize);
   video.addEventListener('timeupdate', drawVisionOverlay);
-  video.addEventListener('play', () => requestAnimationFrame(visionLoop));
-  video.play().catch(() => {});
+  video.addEventListener('play', () => {
+    playButton.hidden = true;
+    errorMessage.hidden = true;
+    requestAnimationFrame(visionLoop);
+  });
+  video.addEventListener('canplay', attemptVideoPlayback, { once: true });
+  video.addEventListener('error', () => {
+    playButton.hidden = true;
+    errorMessage.hidden = false;
+  });
+  playButton.addEventListener('click', attemptVideoPlayback);
+  attemptVideoPlayback();
+
+  function attemptVideoPlayback() {
+    video.play().catch(() => {
+      if (video.error) errorMessage.hidden = false;
+      else playButton.hidden = false;
+    });
+  }
+
   function visionLoop(){ drawVisionOverlay(); if(!video.paused) requestAnimationFrame(visionLoop); }
 }
 
